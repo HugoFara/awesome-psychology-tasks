@@ -248,7 +248,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Hayling Sentence Completion | Complete sentences with a congruent word (Part A), then an incongruent word (Part B). Part B = suppression. | Burgess & Shallice, 1997 | |
 | Brixton Spatial Anticipation | Predict dot position as rules change. Errors after rule changes measure set-shifting. | Burgess & Shallice, 1997 | |
 | Intra-Extra Dimensional Set Shift (IED) | Learn stimulus–reward rules based on one dimension, then shift to a new dimension. Separates intra- from extradimensional shifting. | Sahakian & Owen, 1992 | [MATLAB](https://github.com/margdarna/IDED) |
-| Stockings of Cambridge (SOC) | Plan a sequence of moves to match a goal arrangement of colored balls (computerized Tower of London). | Owen et al., 1990 | |
+| Stockings of Cambridge (SOC) | Plan a sequence of moves to match a goal arrangement of colored balls (computerized Tower of London). | Owen et al., 1990 | [jsPsych](https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-tower-of-london) |
 | Dimensional Change Card Sort (DCCS) | Sort cards by one dimension (e.g., color), then switch to another (e.g., shape). NIH Toolbox EF measure. | Zelazo, 2006 | [NIH Toolbox](https://www.healthmeasures.net/explore-measurement-systems/nih-toolbox) |
 | Pattern Comparison Processing Speed | Judge whether two side-by-side visual patterns are same or different as quickly as possible. NIH Toolbox processing speed measure. | Carlozzi et al., 2015 | [NIH Toolbox](https://www.healthmeasures.net/explore-measurement-systems/nih-toolbox) |
 | Letter-Number Sequencing | Reorder intermixed letters and numbers (numbers ascending, letters alphabetical). Measures WM manipulation. | Gold et al., 1997 | [Ms](https://www.millisecond.com/download/library/letternumbersequencing/) |
@@ -293,7 +293,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Biological Motion (Point-Light Walker) | Identify actions from sparse point-light displays. | Johansson, 1973 | [MATLAB](https://github.com/hyiltiz/PLW) |
 | Judgment of Line Orientation (JLO) | Match the orientation of two angled lines to a response array. Measures visuospatial perception. | Benton et al., 1978 | [Ms](https://www.millisecond.com/download/library/jlo/) |
 | Continuous Flash Suppression (CFS) | High-contrast dynamic patterns to one eye suppress a static target in the other from awareness. Measures unconscious visual processing. | Tsuchiya & Koch, 2005 | |
-| Backward Masking | A briefly presented target is immediately followed by a mask, rendering it invisible. Measures temporal limits of conscious perception. | Breitmeyer & Ogmen, 2000 | |
+| Backward Masking | A briefly presented target is immediately followed by a mask, rendering it invisible. Measures temporal limits of conscious perception. | Breitmeyer & Ogmen, 2000 | [PsychoPy](https://github.com/AdrienSF/psychopy-target-mask-sequence) |
 | Apparent Motion | Two spatially separated stimuli in alternation produce the illusion of movement. Probes motion correspondence mechanisms. | Wertheimer, 1912 | |
 | Time Reproduction / Interval Timing | Reproduce the duration of a presented interval. Measures internal clock precision and scalar timing. | Gibbon, Church, & Meck, 1984 | |
 | Simultaneity Judgment (SJ) | Judge whether two stimuli appeared at the same time or at different times. Measures temporal binding window. | Hirsh & Sherrick, 1961 | |
@@ -313,7 +313,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Sentence Verification | Judge true/false (e.g., "A canary is a bird"). Indexes category typicality. | Collins & Quillian, 1969 | |
 | Sentence Completion (Cloze) | Complete a sentence with the most likely word. Cloze probability used in ERP research (N400). | Taylor, 1953 | [jsPsych](https://www.jspsych.org/7.3/plugins/cloze/) |
 | Phoneme Monitoring | Detect a target phoneme in speech. Measures speech segmentation. | Foss, 1969 | |
-| Nonword Repetition | Repeat novel nonsense words of increasing length. Measures phonological short-term memory. | Gathercole & Baddeley, 1990 | |
+| Nonword Repetition | Repeat novel nonsense words of increasing length. Measures phonological short-term memory. | Gathercole & Baddeley, 1990 | [Ms](https://www.millisecond.com/download/library/nonwordrepetition/) |
 | Syntactic Priming | Exposure to a syntactic structure (e.g., passive) increases production of that structure in subsequent sentences. | Bock, 1986 | |
 | Garden Path Sentences | Sentences with temporary syntactic ambiguity lead to initial misparse and recovery. Reading time increase measures reanalysis. | Frazier & Rayner, 1982 | |
 | Cross-Modal Priming | Auditory sentence + visual word probe at critical points. RT to probe reveals real-time lexical activation during speech. | Swinney, 1979 | |
@@ -353,14 +353,14 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Fear Conditioning and Extinction | Tone (CS) paired with shock (US); CS alone then elicits fear. Extinction via CS-alone trials. | Phelps et al., 2004 | [React Native](https://github.com/flare-kcl/flare-app) |
 | Statistical Learning | Exposure to streams with embedded regularities. Sensitivity to transitional probabilities measures implicit learning. | Saffran, Aslin, & Newport, 1996 | |
 | Artificial Grammar Learning | Study strings from a finite-state grammar; classify new strings as grammatical or not. | Reber, 1967 | [Ms](https://www.millisecond.com/download/library/artificialgrammar/) |
-| Contextual Cueing | Repeated spatial configurations speed visual search without explicit awareness. | Chun & Jiang, 1998 | |
+| Contextual Cueing | Repeated spatial configurations speed visual search without explicit awareness. | Chun & Jiang, 1998 | [Unity](https://github.com/nimarek/Contextual-Cueing-Unity) |
 | Information Integration Category Learning | Categorize stimuli by integrating multiple dimensions (not easily verbalized). Relies on implicit systems. | Ashby & Maddox, 2005 | |
 | Classical (Pavlovian) Conditioning | Neutral stimulus paired with US until it elicits a conditioned response. | Pavlov, 1927 | |
 | Latent Inhibition | Pre-exposure to a stimulus without consequences retards subsequent conditioning to that stimulus. Measures learned irrelevance. | Lubow & Moore, 1959 | |
 | Sensory Preconditioning | Two neutral stimuli are paired; one is then conditioned. Testing the other reveals indirect associative transfer. | Brogden, 1939 | |
 | Trace Conditioning | CS offset precedes US onset by a temporal gap. Requires hippocampal-dependent bridging of the CS–US gap. | Clark & Squire, 1998 | |
 | Sign-Tracking vs. Goal-Tracking | After Pavlovian conditioning, some subjects approach the predictive cue (sign) while others approach the reward location (goal). | Robinson & Flagel, 2009 | |
-| Visuomotor Rotation Adaptation | Cursor feedback is rotated relative to hand movement; participants gradually adapt. Measures sensorimotor error-based learning. | Krakauer et al., 2000 | |
+| Visuomotor Rotation Adaptation | Cursor feedback is rotated relative to hand movement; participants gradually adapt. Measures sensorimotor error-based learning. | Krakauer et al., 2000 | [JS](https://github.com/alan-s-lee/OnPoint) |
 | Instrumental (Operant) Conditioning | Participants learn that actions produce specific outcomes. Schedule manipulations measure goal-directed vs. habitual learning. | Skinner, 1938 | |
 
 ### Emotion
@@ -376,7 +376,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Affective Priming | Emotional prime facilitates/inhibits evaluation of a subsequent target. Measures automatic affective processing. | Fazio et al., 1986 | [Ms](https://www.millisecond.com/download/library/affectivepriming/) |
 | Emotional Flanker | Emotional distractors flank a central target. Measures involuntary attentional capture by emotional stimuli. | Fenske & Eastwood, 2003 | |
 | Startle Reflex Modulation | Eyeblink startle to sudden noise during emotional images — potentiated during negative, attenuated during positive. | Lang, Bradley, & Cuthbert, 1990 | |
-| Mood Induction Procedures | Film clips, music, or recall used to induce transient mood states as experimental variables. | Westermann et al., 1996 | |
+| Mood Induction Procedures | Film clips, music, or recall used to induce transient mood states as experimental variables. | Westermann et al., 1996 | [jsPsych](https://github.com/kywch/Mood-Induction_jsPsych) |
 | Approach-Avoidance Task (AAT) | Push/pull a joystick in response to emotional stimuli. Congruence effects reveal automatic approach/avoidance tendencies. | Rinck & Becker, 2007 | [Ms](https://www.millisecond.com/download/library/approachavoidance/) |
 | Fear-Potentiated Startle | Startle probe during a fear-conditioned stimulus produces enhanced eyeblink. Measures conditioned fear physiologically. | Davis, 1986 | |
 | Trier Social Stress Test (TSST) | Public speaking + mental arithmetic before evaluators. Gold-standard lab stress induction producing cortisol responses. | Kirschbaum, Pirke, & Hellhammer, 1993 | [Unity VR](https://github.com/MIEC/vr-tsst) |
@@ -446,7 +446,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Montreal Cognitive Assessment (MoCA) | Brief screening for mild cognitive impairment across visuospatial, executive, memory, attention, language, and orientation. | Nasreddine et al., 2005 | |
 | Repeatable Battery for Assessment of Neuropsychological Status (RBANS) | Brief battery spanning immediate memory, visuospatial, language, attention, and delayed memory. | Randolph et al., 1998 | |
 | Symbol Digit Modalities Test (SDMT) | Match symbols to digits using a key as quickly as possible. Measures processing speed and incidental learning. | Smith, 1982 | [Ms](https://www.millisecond.com/download/library/sdmt/) |
-| Clock Drawing Test | Draw a clock face showing a specified time. Screens for visuospatial, executive, and semantic deficits. | Freedman et al., 1994 | |
+| Clock Drawing Test | Draw a clock face showing a specified time. Screens for visuospatial, executive, and semantic deficits. | Freedman et al., 1994 | [Django](https://github.com/Guanluo76/Clock_Drawing_Test) |
 
 ---
 
