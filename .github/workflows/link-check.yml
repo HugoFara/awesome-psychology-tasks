@@ -1,0 +1,53 @@
+name: Link Check
+
+on:
+  # Weekly check — Sunday at 06:00 UTC
+  schedule:
+    - cron: "0 6 * * 0"
+  # On PRs that touch the list
+  pull_request:
+    paths:
+      - "README.md"
+      - "CONTRIBUTING.md"
+  # Manual trigger
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-cache-${{ github.sha }}
+          restore-keys: lychee-cache-
+
+      - name: Run lychee link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --config lychee.toml
+            --cache
+            --max-cache-age 1d
+            README.md CONTRIBUTING.md
+          fail: ${{ github.event_name == 'pull_request' }}
+          output: ./lychee-report.md
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lychee-report
+          path: ./lychee-report.md
+
+      - name: Create or update issue on broken links (scheduled only)
+        if: github.event_name == 'schedule' && failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Link Check: broken links detected"
+          content-filepath: ./lychee-report.md
+          labels: link-rot, automated
+          update-existing: true

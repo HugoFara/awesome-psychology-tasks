@@ -1,0 +1,21 @@
+# Sites behind Cloudflare / CAPTCHA / auth walls that produce false positives
+https://gorilla.sc
+https://app.gorilla.sc
+https://pavlovia.org
+https://www.labvanced.com
+https://www.testable.org
+https://opl.apa.org
+https://databrary.org
+
+# Sites that aggressively rate-limit or block bots
+https://www.millisecond.com
+https://pstnet.com
+
+# NIH / institutional sites with intermittent bot blocking
+https://www.healthmeasures.net
+
+# OSF can be slow / rate-limit
+https://osf.io
+
+# Anchors (lychee doesn't resolve in-page anchors well)
+file://

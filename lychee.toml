@@ -1,0 +1,43 @@
+# Lychee link checker configuration
+# https://lychee.cli.rs/usage/config/
+
+# Verbose output
+verbose = true
+
+# Show progress bar
+progress = true
+
+# Maximum number of concurrent requests
+max_concurrency = 8
+
+# Maximum number of retries per request
+max_retries = 3
+
+# Timeout per request in seconds
+timeout = 30
+
+# User agent — some academic sites block default bot agents
+user_agent = "Mozilla/5.0 (compatible; awesome-psychology-tasks-linkcheck/1.0)"
+
+# Accept codes — 200 and 429 (rate-limited, not broken)
+accept = [200, 429]
+
+# Exclude link patterns (regex) — supplements .lycheeignore
+exclude = [
+  "^https://gorilla\\.sc",
+  "^https://app\\.gorilla\\.sc",
+  "^https://www\\.millisecond\\.com",
+  "^https://pstnet\\.com",
+  "^https://pavlovia\\.org",
+  "^https://www\\.healthmeasures\\.net",
+  "^https://osf\\.io",
+  "^https://opl\\.apa\\.org",
+  "^https://databrary\\.org",
+]
+
+# Cache results for 1 day (in seconds)
+cache = true
+max_cache_age = "1d"
+
+# Only check these file types
+include_fragments = false
