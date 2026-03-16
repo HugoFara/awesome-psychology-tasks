@@ -106,7 +106,7 @@ Software for creating and running psychology experiments.
 |---------|-------------|------------------------|
 | [JATOS](https://www.jatos.org) | Open-source server for managing and running online experiments. | jsPsych, lab.js, OSWeb, PsychoJS, any HTML/JS |
 | [MindProbe](https://mindprobe.eu) | Free JATOS-based hosting by the European Society for Cognitive Psychology (ESCoP). | jsPsych, lab.js, OSWeb, PsychoJS |
-| [Open Lab](https://open-lab.online) | Free platform for hosting and sharing lab.js and jsPsych experiments. | lab.js, jsPsych |
+| [Open Lab](https://open-lab.online) | Free platform for hosting and sharing lab.js and jsPsych experiments. ⚠️ Site currently returning errors (Mar 2026); [source](https://github.com/Yury-Shevchenko/openlab) still available. | lab.js, jsPsych |
 | [Cognition.run](https://www.cognition.run) | Free hosting with simple upload and CSV data download. | jsPsych, lab.js |
 
 ---
@@ -184,9 +184,9 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Stroop Task | Name the ink color of color-words (e.g., "RED" in blue ink). Measures selective attention and inhibitory control. | Stroop, 1935 | [PT](https://www.psytoolkit.org/experiment-library/stroop.html) · [Ms](https://www.millisecond.com/download/library/stroop/) · [EF](https://github.com/expfactory-experiments/stroop-5min) |
 | Eriksen Flanker Task | Respond to a central target flanked by congruent or incongruent distractors. Measures focused attention and response conflict. | Eriksen & Eriksen, 1974 | [PT](https://www.psytoolkit.org/experiment-library/flanker.html) · [Ms](https://www.millisecond.com/download/library/flanker/) |
 | Visual Search | Search for a target among distractors. Set-size effects reveal parallel (pop-out) vs. serial search. | Treisman & Gelade, 1980 | [PT](https://www.psytoolkit.org/experiment-library/search.html) · [Ms](https://www.millisecond.com/download/library/visualsearch/) |
-| Posner Cueing Task | Spatial cue (valid/invalid) precedes a target. Measures covert attentional orienting and disengagement. | Posner, 1980 | [PT](https://www.psytoolkit.org/experiment-library/posner.html) · [Ms](https://www.millisecond.com/download/library/posnercueing/) |
+| Posner Cueing Task | Spatial cue (valid/invalid) precedes a target. Measures covert attentional orienting and disengagement. | Posner, 1980 | [PT](https://www.psytoolkit.org/experiment-library/cueing.html) · [Ms](https://www.millisecond.com/download/library/posnercueing/) |
 | Attentional Blink | Detect two targets in a rapid serial visual presentation (RSVP) stream. The second target is often missed at 200–500 ms lag. | Raymond, Shapiro, & Arnell, 1992 | [Ms](https://www.millisecond.com/download/library/attentionalblink/) |
-| Attention Network Test (ANT) | Combines Flanker with cue conditions to independently measure alerting, orienting, and executive attention networks. | Fan et al., 2002 | [PT](https://www.psytoolkit.org/experiment-library/ant.html) · [Ms](https://www.millisecond.com/download/library/ant/) |
+| Attention Network Test (ANT) | Combines Flanker with cue conditions to independently measure alerting, orienting, and executive attention networks. | Fan et al., 2002 | [Ms](https://www.millisecond.com/download/library/ant/) |
 | Continuous Performance Task (CPT) | Respond to infrequent targets in a sustained stimulus stream. Measures vigilance and impulsivity. | Rosvold et al., 1956 | [Ms](https://www.millisecond.com/download/library/cpt/) |
 | Dichotic Listening | Different messages to each ear; shadow one. Measures selective auditory attention. | Cherry, 1953 | |
 | Multiple Object Tracking (MOT) | Track a subset of moving objects among identical distractors. Measures attentional capacity across space and time. | Pylyshyn & Storm, 1988 | [Ms](https://www.millisecond.com/download/library/mot/) |
@@ -207,7 +207,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Task | Description | Key Reference | Implementations |
 |------|-------------|---------------|-----------------|
 | N-back | Indicate whether the current stimulus matches the one N items back. Working memory updating; difficulty scales with N. | Kirchner, 1958 | [PT](https://www.psytoolkit.org/experiment-library/nback2.html) · [Ms](https://www.millisecond.com/download/library/nback/) |
-| Sternberg Task | Judge whether a probe was in a previously shown memory set. RT increases linearly with set size. | Sternberg, 1966 | [PT](https://www.psytoolkit.org/experiment-library/sternberg.html) · [Ms](https://www.millisecond.com/download/library/sternberg/) |
+| Sternberg Task | Judge whether a probe was in a previously shown memory set. RT increases linearly with set size. | Sternberg, 1966 | [Ms](https://www.millisecond.com/download/library/sternberg/) |
 | Free Recall | Study a list, then recall items in any order. Serial position effects reveal storage/retrieval dynamics. | Murdock, 1962 | [Ms](https://www.millisecond.com/download/library/freerecall/) |
 | Recognition Memory | Distinguish old from new items after study. Analyzed with signal detection theory (d', criterion). | Mandler, 1980 | [Ms](https://www.millisecond.com/download/library/recognitionmemory/) |
 | Corsi Block-Tapping | Reproduce a sequence of block taps. Measures visuospatial working memory span. | Corsi, 1972 | [PT](https://www.psytoolkit.org/experiment-library/corsi.html) · [Ms](https://www.millisecond.com/download/library/corsi/) |
@@ -236,10 +236,10 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Task | Description | Key Reference | Implementations |
 |------|-------------|---------------|-----------------|
 | Wisconsin Card Sorting Test (WCST) | Sort cards by an unknown, shifting rule. Perseverative errors measure cognitive flexibility. | Berg, 1948 | [PT](https://www.psytoolkit.org/experiment-library/wcst.html) · [Ms](https://www.millisecond.com/download/library/cardsort/) |
-| Tower of London / Hanoi | Rearrange disks to match a goal in minimum moves. Measures planning and problem-solving. | Shallice, 1982 | [PT](https://www.psytoolkit.org/experiment-library/tol.html) · [Ms](https://www.millisecond.com/download/library/toweroflondon/) · [EF](https://github.com/expfactory-experiments/tower-of-london) |
-| Go/No-Go | Respond to frequent "go" stimuli, withhold to "no-go." Measures response inhibition. | Donders, 1868 | [PT](https://www.psytoolkit.org/experiment-library/gonogo.html) · [Ms](https://www.millisecond.com/download/library/gonogo/) · [TB](https://github.com/TaskBeacon/T000005-go-nogo) |
+| Tower of London / Hanoi | Rearrange disks to match a goal in minimum moves. Measures planning and problem-solving. | Shallice, 1982 | [Ms](https://www.millisecond.com/download/library/toweroflondon/) · [EF](https://github.com/expfactory-experiments/tower-of-london) |
+| Go/No-Go | Respond to frequent "go" stimuli, withhold to "no-go." Measures response inhibition. | Donders, 1868 | [PT](https://www.psytoolkit.org/experiment-library/go-no-go.html) · [Ms](https://www.millisecond.com/download/library/gonogo/) · [TB](https://github.com/TaskBeacon/T000005-go-nogo) |
 | Stop-Signal Task | Cancel an initiated response when a stop signal appears. SSRT estimates inhibitory control speed. | Logan & Cowan, 1984 | [PT](https://www.psytoolkit.org/experiment-library/stopsignal.html) · [Ms](https://www.millisecond.com/download/library/stopsignal/) · [TB](https://github.com/TaskBeacon/H000012-sst) |
-| Task Switching | Alternate between tasks; switch cost measures mental set reconfiguration. | Rogers & Monsell, 1995 | [PT](https://www.psytoolkit.org/experiment-library/taskswitch.html) · [Ms](https://www.millisecond.com/download/library/taskswitching/) |
+| Task Switching | Alternate between tasks; switch cost measures mental set reconfiguration. | Rogers & Monsell, 1995 | [PT](https://www.psytoolkit.org/experiment-library/taskswitching.html) · [Ms](https://www.millisecond.com/download/library/taskswitching/) |
 | Trail Making Test (TMT) | Part A: connect numbers. Part B: alternate numbers and letters. B–A indexes cognitive flexibility. | Reitan, 1958 | [Ms](https://www.millisecond.com/download/library/trailmaking/) |
 | Simon Task | Respond based on a non-spatial feature while stimulus location is congruent/incongruent with the response. | Simon & Rudell, 1967 | [PT](https://www.psytoolkit.org/experiment-library/simon.html) · [Ms](https://www.millisecond.com/download/library/simon/) |
 | Antisaccade | Look away from a peripheral stimulus. Measures inhibitory control of eye movements. | Hallett, 1978 | [Ms](https://www.millisecond.com/download/library/antisaccade/) |
@@ -284,7 +284,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Gabor Patch Detection | Detect presence/orientation of Gabor patches at varying contrasts. Measures visual sensitivity. | Watson & Pelli, 1983 | |
 | Random Dot Motion (RDK) | Judge global motion direction with varying coherence levels. Measures motion perception and perceptual decision-making. | Newsome & Pare, 1988 | [jP](https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-rdk) |
 | Change Detection (Perceptual) | Detect differences between alternating scene versions separated by a blank. | Rensink, O'Regan, & Clark, 1997 | [Ms](https://www.millisecond.com/download/library/changedetection/) |
-| Muller-Lyer Illusion | Judge line lengths with inward/outward arrowheads. Measures susceptibility to geometric illusions. | Muller-Lyer, 1889 | [PT](https://www.psytoolkit.org/experiment-library/mullerlyer.html) · [Ms](https://www.millisecond.com/download/library/mullerlyer/) |
+| Muller-Lyer Illusion | Judge line lengths with inward/outward arrowheads. Measures susceptibility to geometric illusions. | Muller-Lyer, 1889 | [Ms](https://www.millisecond.com/download/library/mullerlyer/) |
 | Psychophysical Staircase | Stimulus intensity adjusted trial-by-trial to converge on perceptual threshold. | Levitt, 1971 | |
 | Binocular Rivalry | Different images to each eye; perception alternates. Probes perceptual competition and conscious awareness. | Blake & Logothetis, 2002 | |
 | Embedded Figures Test | Locate a simple shape within a complex pattern. Measures field independence. | Witkin et al., 1971 | [Ms](https://www.millisecond.com/download/library/embeddedfigures/) |
@@ -304,9 +304,8 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 
 | Task | Description | Key Reference | Implementations |
 |------|-------------|---------------|-----------------|
-| Lexical Decision | Classify letter strings as real words or nonwords. Reveals lexical access speed and word frequency effects. | Meyer & Schvaneveldt, 1971 | [PT](https://www.psytoolkit.org/experiment-library/lexicaldecision.html) · [Ms](https://www.millisecond.com/download/library/lexicaldecision/) |
+| Lexical Decision | Classify letter strings as real words or nonwords. Reveals lexical access speed and word frequency effects. | Meyer & Schvaneveldt, 1971 | [PT](https://www.psytoolkit.org/experiment-library/ldt.html) · [Ms](https://www.millisecond.com/download/library/lexicaldecision/) |
 | Semantic Priming | A related prime speeds target recognition. Measures spreading activation in semantic memory. | Neely, 1977 | [Ms](https://www.millisecond.com/download/library/semanticpriming/) |
-| Reading Span | Read sentences while remembering final words. WM capacity in a language context. | Daneman & Carpenter, 1980 | [Ms](https://www.millisecond.com/download/library/readingspan/) |
 | Picture Naming | Name depicted objects as quickly as possible. Sensitive to lexical retrieval and word frequency. | Snodgrass & Vanderwart, 1980 | |
 | Word Naming (Pronunciation) | Read aloud presented words. Naming latency reflects phonological encoding and regularity effects. | Coltheart et al., 2001 | |
 | Self-Paced Reading | Press a key to reveal each word; reading times at critical regions reveal parsing strategies. | Just, Carpenter, & Woolley, 1982 | |
@@ -348,7 +347,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Task | Description | Key Reference | Implementations |
 |------|-------------|---------------|-----------------|
 | Probabilistic Learning (Two-Armed Bandit) | Choose between options with different reward probabilities. Modeled with reinforcement learning. | Daw et al., 2006 | [Niv Lab](https://nivlab.github.io/jspsych-demos/tasks/3arm/experiment.html) |
-| Serial Reaction Time (SRT) | Respond to stimuli in a repeating spatial sequence. RT speedup indexes implicit sequence learning. | Nissen & Bullemer, 1987 | [PT](https://www.psytoolkit.org/experiment-library/srt.html) · [Ms](https://www.millisecond.com/download/library/srt/) |
+| Serial Reaction Time (SRT) | Respond to stimuli in a repeating spatial sequence. RT speedup indexes implicit sequence learning. | Nissen & Bullemer, 1987 | [Ms](https://www.millisecond.com/download/library/srt/) |
 | Weather Prediction Task | Predict outcomes from probabilistic cue combinations. Dissociates declarative from procedural learning. | Knowlton, Squire, & Gluck, 1994 | [Ms](https://www.millisecond.com/download/library/weatherprediction/) |
 | Reversal Learning | After learning a stimulus–reward association, contingencies reverse. Measures flexibility in reward learning. | Dias, Robbins, & Roberts, 1996 | [Ms](https://www.millisecond.com/download/library/reversallearning/) |
 | Fear Conditioning and Extinction | Tone (CS) paired with shock (US); CS alone then elicits fear. Extinction via CS-alone trials. | Phelps et al., 2004 | |
@@ -368,7 +367,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 
 | Task | Description | Key Reference | Implementations |
 |------|-------------|---------------|-----------------|
-| Emotional Stroop | Name ink color of emotionally valenced words. Slowed naming for emotional words indexes attentional capture. | Williams, Mathews, & MacLeod, 1996 | [PT](https://www.psytoolkit.org/experiment-library/emotionalstroop.html) · [Ms](https://www.millisecond.com/download/library/emotionalstroop/) |
+| Emotional Stroop | Name ink color of emotionally valenced words. Slowed naming for emotional words indexes attentional capture. | Williams, Mathews, & MacLeod, 1996 | [Ms](https://www.millisecond.com/download/library/emotionalstroop/) |
 | Dot Probe (Attentional Bias) | Probe replaces one of two stimuli (emotional/neutral). Faster detection at emotional location = attentional bias. | MacLeod, Mathews, & Tata, 1986 | [Ms](https://www.millisecond.com/download/library/dotprobe/) · [TB](https://github.com/TaskBeacon/T000003-emodot) |
 | Affective Go/No-Go | Respond to one emotional category, withhold to another. Measures emotion–inhibition interaction. | Murphy et al., 1999 | [Ms](https://www.millisecond.com/download/library/affectivegonogo/) |
 | Emotion Recognition (Ekman Faces) | Label facial expressions of the six basic emotions. Measures facial emotion recognition accuracy. | Ekman & Friesen, 1976 | [Ms](https://www.millisecond.com/download/library/emotionrecognition/) |
@@ -424,7 +423,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 |------|-------------|---------------|-----------------|
 | Number Comparison (Symbolic) | Judge which of two Arabic digits is larger. Distance effect reveals analogue magnitude representation. | Moyer & Landauer, 1967 | [Ms](https://www.millisecond.com/download/library/numbercomparison/) |
 | SNARC Task | Classify numbers while responding left/right. Faster left responses to small numbers reveals spatial–numerical mapping. | Dehaene, Bossini, & Giraux, 1993 | [Ms](https://www.millisecond.com/download/library/snarc/) |
-| Subitizing | Enumerate briefly flashed dot arrays. Fast and accurate for 1–4 items (subitizing range), slower beyond. | Kaufman et al., 1949 | [PT](https://www.psytoolkit.org/experiment-library/subitizing.html) |
+| Subitizing | Enumerate briefly flashed dot arrays. Fast and accurate for 1–4 items (subitizing range), slower beyond. | Kaufman et al., 1949 | |
 | Approximate Number System (ANS) Task | Judge which of two dot arrays is more numerous (non-symbolic). Ratio-dependent accuracy indexes ANS precision. | Halberda, Mazzocco, & Feigenson, 2008 | [Ms](https://www.millisecond.com/download/library/ans/) |
 | Number Line Estimation | Place a number on a physical line anchored at 0 and 100/1000. Shift from logarithmic to linear mapping tracks development. | Siegler & Opfer, 2003 | |
 

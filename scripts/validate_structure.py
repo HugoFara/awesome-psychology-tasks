@@ -37,16 +37,21 @@ def slugify(text: str) -> str:
     """Convert heading text to GitHub-style anchor.
 
     GitHub's algorithm: lowercase, strip leading/trailing whitespace,
-    replace spaces with -, remove everything except alphanumeric, spaces,
-    hyphens, and underscores. Ampersands and slashes get removed.
+    remove markdown link syntax (keep text), then character-by-character:
+    keep alphanumeric/hyphen/underscore, replace spaces with -, drop the rest.
+    Multiple hyphens are NOT collapsed (e.g. "A & B" → "a--b").
     """
     text = text.lower().strip()
     # Remove markdown links but keep link text
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-    # GitHub keeps alphanumeric, spaces, hyphens, underscores; removes the rest
-    text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[\s]+", "-", text)
-    return text
+    result = []
+    for ch in text:
+        if ch.isalnum() or ch in ("-", "_"):
+            result.append(ch)
+        elif ch == " ":
+            result.append("-")
+        # everything else (& / . , ; : etc.) is dropped
+    return "".join(result)
 
 
 def validate(text: str) -> list[Issue]:
@@ -74,7 +79,7 @@ def validate(text: str) -> list[Issue]:
     current_domain = None
     in_table = False
     expected_cols = 0
-    task_names: dict[str, list[int]] = {}  # name -> [lines]
+    section_task_names: dict[str, list[int]] = {}  # name -> [lines] within current section
     table_tasks: list[tuple[str, int]] = []  # (name, line) for ordering check
 
     for i, line in enumerate(lines, 1):
@@ -102,10 +107,23 @@ def validate(text: str) -> list[Issue]:
                             )
                         )
 
+            # Check for duplicates within the section we're leaving
+            for name, line_nums in section_task_names.items():
+                if len(line_nums) > 1:
+                    issues.append(
+                        Issue(
+                            "warning",
+                            "duplicate",
+                            f"Duplicate entry '{name}' in {current_domain} on lines {', '.join(map(str, line_nums))}",
+                            line_nums[0],
+                        )
+                    )
+
             if m.group(1) == "###":
                 current_domain = m.group(2).strip()
             in_table = False
             table_tasks = []
+            section_task_names = {}
             continue
 
         # Table header
@@ -147,7 +165,7 @@ def validate(text: str) -> list[Issue]:
                 if cols:
                     name = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", cols[0]).strip()
                     if name and name != "Task":
-                        task_names.setdefault(name, []).append(i)
+                        section_task_names.setdefault(name, []).append(i)
                         table_tasks.append((name, i))
 
             continue
@@ -155,18 +173,6 @@ def validate(text: str) -> list[Issue]:
         # End of table
         if in_table and not line.startswith("|"):
             in_table = False
-
-    # Check for duplicates
-    for name, line_nums in task_names.items():
-        if len(line_nums) > 1:
-            issues.append(
-                Issue(
-                    "warning",
-                    "duplicate",
-                    f"Duplicate task '{name}' on lines {', '.join(map(str, line_nums))}",
-                    line_nums[0],
-                )
-            )
 
     # Check for broken markdown links (missing closing parens etc.)
     for i, line in enumerate(lines, 1):
