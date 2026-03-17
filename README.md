@@ -29,6 +29,8 @@
   - [Developmental](#developmental)
   - [Clinical / Screening](#clinical--screening)
 - [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 ---
 
