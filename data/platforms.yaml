@@ -1,0 +1,215 @@
+# Platforms & Frameworks for running psychology experiments.
+#
+# Each entry renders a row in one of four tables in README.md.
+# Status legend: active | maintained | legacy
+# Timing legend: lab | good | browser | mixed (free-form short label rendered verbatim)
+#
+# To add or change a platform, edit this file — README.md is regenerated.
+
+open_source:
+  - name: jsPsych
+    url: https://www.jspsych.org
+    description: Plugin-based JavaScript framework for browser-based behavioral experiments.
+    tech: JavaScript
+    online: Yes (native)
+    status: active
+    timing: Browser
+    pricing: Free
+  - name: PsychoPy
+    url: https://www.psychopy.org
+    description: Full-featured experiment builder with graphical Builder and Python Coder views. Exports to JS via PsychoJS.
+    tech: Python; JS (PsychoJS)
+    online: Via Pavlovia
+    status: active
+    timing: Lab (desktop) / Browser (online)
+    pricing: Free
+  - name: lab.js
+    url: https://lab.js.org
+    description: Drag-and-drop visual experiment builder that runs in the browser. Exports to JATOS, Open Lab, Pavlovia.
+    tech: JavaScript
+    online: Yes (native)
+    status: active
+    timing: Browser
+    pricing: Free
+  - name: OpenSesame
+    url: https://osdoc.cogsci.nl
+    description: Graphical experiment builder with Python inline scripting. Online via OSWeb + JATOS.
+    tech: Python; JS (OSWeb)
+    online: Partial (OSWeb)
+    status: active
+    timing: Good (desktop) / Browser (online)
+    pricing: Free
+  - name: oTree
+    url: https://www.otree.org
+    description: Framework for interactive/multiplayer experiments, strong in game theory and economics.
+    tech: Python (Django); JS
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free
+  - name: Empirica
+    url: https://empirica.ly
+    description: Platform for real-time multiplayer behavioral experiments.
+    tech: JavaScript (React)
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free
+  - name: TaskBeacon
+    url: https://github.com/TaskBeacon
+    description: Community-driven platform for sharing and standardizing psychological paradigms. AI-assisted experiment generation.
+    tech: Python (PsychoPy); TypeScript (jsPsych)
+    online: Yes (psyflow-web)
+    status: active
+    timing: Browser / Lab
+    pricing: Free
+  - name: psychTestR
+    url: https://pmcharrison.github.io/psychTestR/
+    description: R package for behavioral experiment interfaces, strong in adaptive testing.
+    tech: R (Shiny)
+    online: Yes (Shiny)
+    status: maintained
+    timing: Browser
+    pricing: Free
+  - name: PEBL
+    url: https://pebl.sourceforge.net
+    description: Cross-platform experiment building language with a 100+ test battery included. Now supports WebAssembly.
+    tech: Custom language (SDL)
+    online: Partial (WASM)
+    status: maintained
+    timing: Good (desktop)
+    pricing: Free
+  - name: Pushkin
+    url: https://github.com/pushkin-consortium/pushkin
+    description: Platform for large-scale citizen-science online psychology experiments.
+    tech: JS (React/Node); Docker
+    online: Yes
+    status: maintained
+    timing: Browser
+    pricing: Free
+  - name: Tatool Web
+    url: https://www.tatool.ch
+    description: Framework for cognitive training and experimental tasks with a built-in task library.
+    tech: JavaScript (AngularJS)
+    online: Yes
+    status: maintained
+    timing: Browser
+    pricing: Free
+  - name: Collector
+    url: https://github.com/gikeymarcia/Collector
+    description: Web-based experiment platform using spreadsheet-like trial definitions.
+    tech: PHP, JS, MySQL
+    online: Yes
+    status: legacy
+    timing: Browser
+    pricing: Free
+
+commercial:
+  - name: Gorilla
+    url: https://gorilla.sc
+    description: Cloud-based drag-and-drop experiment builder with participant recruitment integration.
+    tech: Web GUI; JS/HTML/CSS
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free to build; ~£1/participant (token system)
+  - name: Pavlovia
+    url: https://pavlovia.org
+    description: Hosting platform integrated with PsychoPy. Supports PsychoJS, jsPsych, and lab.js experiments.
+    tech: Web platform; JS
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: ~€1/participant (credit system) or ~£1,800/yr institutional
+  - name: Inquisit (Millisecond)
+    url: https://www.millisecond.com
+    description: Precise psychological measurement software (v7) with a 900+ test library. Desktop and web versions.
+    tech: Proprietary scripting
+    online: Yes (Inquisit Web)
+    status: active
+    timing: Lab (desktop) / Browser (web)
+    pricing: License (quote-based, academic pricing available)
+  - name: E-Prime
+    url: https://pstnet.com/products/e-prime/
+    description: Widely used in lab-based cognitive/neuro research. Precise timing, EEG/fMRI integration.
+    tech: E-Basic (VB-like)
+    online: Limited (E-Prime Go)
+    status: active
+    timing: Lab (desktop)
+    pricing: License ~$1,000+
+  - name: PsyToolkit
+    url: https://www.psytoolkit.org
+    description: Free toolkit for online experiments and surveys with a built-in experiment library.
+    tech: Custom scripting
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free
+  - name: Testable
+    url: https://www.testable.org
+    description: Web-based experiment platform with a graphical editor and template library.
+    tech: Web GUI; JS
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free tier; $299–699/yr academic
+  - name: FindingFive
+    url: https://www.findingfive.com
+    description: Cloud platform using a grammar-based study design approach. Nonprofit (501(c)(3)).
+    tech: JSON-like grammar
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free to build; $0.75/participant
+  - name: Labvanced
+    url: https://www.labvanced.com
+    description: No-code experiment builder with 600+ templates. Supports webcam eye-tracking.
+    tech: Web GUI (proprietary)
+    online: Yes
+    status: active
+    timing: Browser
+    pricing: Free tier; $69–299/mo paid
+  - name: Cognition.run
+    url: https://www.cognition.run
+    description: Hosting platform for jsPsych experiments with automatic data collection and AI experiment generation.
+    tech: Hosts jsPsych / JS
+    online: Yes
+    status: maintained
+    timing: Browser
+    pricing: Freemium
+
+survey_clinical:
+  - name: Qualtrics
+    url: https://www.qualtrics.com
+    description: Survey platform widely used for questionnaire-embedded RT tasks and branching logic in psychology.
+    online: Yes
+    pricing: Institutional license
+  - name: REDCap
+    url: https://www.project-redcap.org
+    description: Secure web application for building and managing online surveys and databases, common in clinical psychology research.
+    online: Yes
+    pricing: Free (institutional)
+  - name: NIH Toolbox
+    url: https://www.healthmeasures.net/explore-measurement-systems/nih-toolbox
+    description: Validated neurobehavioral assessment battery (7 cognition tests). Administered via iPad app. Ages 3–85.
+    online: iPad app
+    pricing: License fee
+
+hosting_backend:
+  - name: JATOS
+    url: https://www.jatos.org
+    description: Open-source server for managing and running online experiments.
+    hosts: jsPsych, lab.js, OSWeb, PsychoJS, any HTML/JS
+  - name: MindProbe
+    url: https://mindprobe.eu
+    description: Free JATOS-based hosting by the European Society for Cognitive Psychology (ESCoP).
+    hosts: jsPsych, lab.js, OSWeb, PsychoJS
+  - name: Open Lab
+    url: https://open-lab.online
+    description: |
+      Free platform for hosting and sharing lab.js and jsPsych experiments. ⚠️ Site currently returning errors (Mar 2026); [source](https://github.com/Yury-Shevchenko/openlab) still available.
+    hosts: lab.js, jsPsych
+  - name: Cognition.run
+    url: https://www.cognition.run
+    description: Free hosting with simple upload and CSV data download.
+    hosts: jsPsych, lab.js

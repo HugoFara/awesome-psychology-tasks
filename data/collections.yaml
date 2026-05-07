@@ -1,0 +1,112 @@
+# Repositories & Collections of ready-made experiments.
+#
+# Three sub-tables: collections, replication_projects, data_repositories.
+
+collections:
+  - name: Millisecond Test Library
+    url: https://www.millisecond.com/download/library/
+    platform: Inquisit
+    approx_tasks: "909"
+    description: |
+      Largest single library — covers nearly all domains of psychology. Browsable by [category](https://www.millisecond.com/download/library/).
+  - name: Labvanced Templates
+    url: https://www.labvanced.com/content/research/en/tasks/
+    platform: Labvanced
+    approx_tasks: "600+"
+    description: Pre-loaded templates across cognitive, developmental, and behavioral economics.
+  - name: Pavlovia Explore
+    url: https://pavlovia.org/explore
+    platform: PsychoPy/jsPsych/lab.js
+    approx_tasks: Thousands
+    description: Public experiments shared by the community on Pavlovia's GitLab.
+  - name: Gorilla Open Materials
+    url: https://app.gorilla.sc/openmaterials
+    platform: Gorilla
+    approx_tasks: Hundreds
+    description: Open-access experiments, tasks, and questionnaires. Clone directly into your Gorilla project.
+  - name: E-Prime Experiment Library
+    url: https://support.pstnet.com/hc/en-us/categories/115000077168
+    platform: E-Prime
+    approx_tasks: "150+"
+    description: Ready-to-run experiments across core domains.
+  - name: PEBL Test Battery
+    url: https://pebl.sourceforge.net
+    platform: PEBL
+    approx_tasks: "100+"
+    description: Built-in battery of cognitive tests.
+  - name: The Experiment Factory
+    url: https://expfactory.github.io/experiments/
+    platform: jsPsych/Docker
+    approx_tasks: "80+"
+    description: |
+      Reproducible web-based experiments in Docker containers. [Individual repos](https://github.com/expfactory-experiments).
+  - name: PsyToolkit Experiment Library
+    url: https://www.psytoolkit.org/experiment-library/
+    platform: PsyToolkit
+    approx_tasks: "50+"
+    description: Free library of classic cognitive experiments — runnable in-browser with source code.
+  - name: Testable Library
+    url: https://www.testable.org/library
+    platform: Testable
+    approx_tasks: "50+"
+    description: Ready-made classic experiment templates.
+  - name: jsPsych Contrib
+    url: https://github.com/jspsych/jspsych-contrib/tree/main/packages
+    platform: jsPsych
+    approx_tasks: 30+ plugins
+    description: Community-contributed plugins and extensions (RDK, Corsi blocks, flanker, etc.).
+  - name: jsPsych Experiment Demos
+    url: https://github.com/jspsych/experiment-demos
+    platform: jsPsych
+    approx_tasks: Demos
+    description: Full example experiments from the jsPsych team.
+  - name: Niv Lab jsPsych Demos
+    url: https://nivlab.github.io/jspsych-demos/
+    platform: jsPsych
+    approx_tasks: Demos
+    description: |
+      Complete task implementations ([two-step](https://nivlab.github.io/jspsych-demos/tasks/two-step/experiment.html), [bandit](https://nivlab.github.io/jspsych-demos/tasks/3arm/experiment.html), etc.) with live interactive demos.
+  - name: PsychoPyParadigms
+    url: https://github.com/djangraw/PsychoPyParadigms
+    platform: PsychoPy
+    approx_tasks: Varies
+    description: Community collection of PsychoPy experiment implementations.
+  - name: NCMlab/CognitiveTasks
+    url: https://github.com/NCMlab/CognitiveTasks
+    platform: Various
+    approx_tasks: Varies
+    description: Cognitive assessment tasks with GUIs.
+  - name: TaskBeacon Tasks
+    url: https://github.com/TaskBeacon
+    platform: PsychoPy / jsPsych
+    approx_tasks: Growing
+    description: Standardized paradigms (BART, Go/No-Go, Stop-Signal, AX-CPT, MID, Emotional Dot Probe, etc.) with structured formats.
+  - name: APA Online Psychology Lab
+    url: https://opl.apa.org
+    platform: Web-based
+    approx_tasks: Dozens
+    description: Peer-reviewed interactive experiments for teaching.
+
+replication_projects:
+  - name: Many Labs 1
+    url: https://osf.io/wx7ck/
+    location: OSF
+    description: 13 classic effects replicated across 36 labs.
+  - name: Many Labs 2
+    url: https://osf.io/8cd4r/
+    location: OSF
+    description: ~28 effects replicated across 100+ labs in 20+ countries.
+  - name: Psychological Science Accelerator
+    url: https://psysciacc.org
+    location: psysciacc.org
+    description: Global network of 1,000+ researchers conducting large-scale collaborative studies.
+
+data_repositories:
+  - name: Databrary
+    url: https://databrary.org
+    location: databrary.org
+    description: Digital data library for video/audio behavioral research data (access-controlled).
+  - name: Open Science Framework
+    url: https://osf.io
+    location: osf.io
+    description: General-purpose repository for research materials, data, and preprints.

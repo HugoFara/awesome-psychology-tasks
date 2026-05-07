@@ -2,57 +2,94 @@
 
 Thank you for your interest in contributing! This list aims to be a comprehensive, well-organized reference for experimental psychology tasks, platforms, and repositories.
 
-## How to Contribute
+## How the list is built
 
-### Adding a Task
+`README.md` is **generated** from structured sources — do not edit it directly. The pieces are:
 
-To add a new task to a cognitive domain, please include:
+- `sections/*.md` — hand-edited narrative prose (intro, "Choosing a Platform", "Limitations & Gotchas", "Cross-Domain Tasks", etc.).
+- `data/platforms.yaml` — the four platform tables (Open Source, Commercial / Freemium, Survey & Clinical, Hosting & Backend).
+- `data/collections.yaml` — the Repositories & Collections table plus replication projects and data repositories.
+- `data/source-labels.yaml` — maps the short labels (`PT`, `Ms`, `EF`, `Pv`, …) shown in the Implementations column to entries in the SPA's `community-implementations.json`.
+- `paradigms.json` and `community-implementations.json` (in the sibling `library.nccr-ttf-ddg.ch/public/data/` directory) — the canonical paradigm list and the known implementations harvested by the [pipeline](../pipeline/). Each paradigm row in "Tasks by Cognitive Domain" comes from these.
 
-- **Task name** — the most commonly used name in the literature
-- **Description** — 1–2 sentences explaining what the participant does and what the task measures
-- **Key reference** — the original or most widely cited paper (Author, Year format)
-- **Correct domain** — place the task in its primary cognitive domain; if it spans multiple domains, add it to the most relevant one and mention it in the [Cross-Domain Tasks](README.md#cross-domain-tasks) section
+To regenerate the README locally:
 
-Example:
-
-```markdown
-| Stroop Task | Name the ink color of color-words (e.g., "RED" in blue ink). Measures selective attention and inhibitory control. | Stroop, 1935 |
+```bash
+pip install -r scripts/requirements.txt
+python scripts/build_readme.py            # writes README.md
+python scripts/build_readme.py --check    # CI: exits 1 if README.md is stale
 ```
 
-### Adding a Platform
+## How to Contribute
 
-To add a new platform or framework, please include:
+### Adding a Task (Paradigm)
 
-- **Name** with a link to the official website
-- **Description** — what it does, in one sentence
-- **Language / Tech** — programming language or technology used
-- **Online support** — whether it supports running experiments in a web browser
-- **Open source status** — place it in the correct subsection (Open Source vs. Commercial / Freemium)
+Tasks live in `paradigms.json` in the SPA. To add one, open a PR against `library.nccr-ttf-ddg.ch/public/data/paradigms.json` with:
 
-### Adding a Repository or Collection
+```json
+{
+  "slug": "stroop-task",
+  "name": "Stroop Task",
+  "domains": ["Attention"],
+  "description": "Name the ink color of color-words (e.g., \"RED\" in blue ink). Measures selective attention and inhibitory control.",
+  "keyReferences": [{ "citation": "Stroop, 1935" }]
+}
+```
 
-To add a new task repository, please include:
+- **slug** — kebab-case unique identifier; used as the join key with implementations.
+- **name** — most-cited name in the literature.
+- **domains** — array of cognitive domains (one of: `Attention`, `Memory`, `Executive Function`, `Decision Making`, `Perception`, `Language`, `Social Cognition`, `Learning`, `Emotion`, `Creativity`, `Metacognition`, `Motor Control`, `Numerical Cognition`, `Developmental`, `Clinical / Screening`). A paradigm with multiple domains will appear in each table.
+- **description** — 1–2 sentences: what the participant does and what it measures.
+- **keyReferences[].citation** — the original or most canonical citation (`Author, Year`).
 
-- **Name** with a link
-- **Platform** — what experiment platform the tasks use
-- **Approximate number of tasks** — a rough count
-- **Description** — one sentence about what it contains
+When the SPA is rebuilt, regenerate the README — the new task appears automatically.
+
+### Adding an Implementation
+
+Implementations live in `community-implementations.json` and are normally written by the [ingestion pipeline](../pipeline/) (PsyToolkit, Pavlovia, jsPsych demos, etc.). To curate one by hand, append a record:
+
+```json
+{
+  "id": 10999,
+  "name": "Stroop Task · Inquisit (Millisecond)",
+  "domains": ["Attention"],
+  "paradigm": "stroop-task",
+  "tier": "community",
+  "platform": "inquisit",
+  "url": "https://www.millisecond.com/download/library/stroop/",
+  "provenance": { "source": "manual", "fetchedAt": "2026-05-07", "verificationResult": "passed", "lastVerifiedAt": "2026-05-07" }
+}
+```
+
+The README only renders implementations whose `platform` is listed in `data/source-labels.yaml`. To surface a new platform under its own short label (e.g., `[Lv]` for Labvanced), add it there.
+
+### Adding a Platform or Collection
+
+Edit `data/platforms.yaml` (for the four platform tables) or `data/collections.yaml` (for repositories, replication projects, data repositories). Re-run the generator.
+
+Platform fields: `name`, `url`, `description`, `tech`, `online`, `status` (`active` | `maintained` | `legacy`), `timing`, `pricing`. Survey/clinical and hosting tables have a reduced field set — see existing rows.
+
+### Editing Narrative Sections
+
+The "Choosing a Platform" decision tree, "Platform Limitations & Gotchas" notes, and "Cross-Domain Tasks" list are hand-curated — edit the corresponding file under `sections/` and re-run the generator. Do **not** edit `README.md` directly.
 
 ## Guidelines
 
-1. **Verify before submitting.** Make sure the task, platform, or repository is not already listed.
+1. **Verify before submitting.** Make sure the task, platform, or repository is not already listed (check the YAML/JSON source, not the README).
 2. **Use established paradigms.** Tasks should be well-known in the literature with at least one peer-reviewed publication describing them.
 3. **Keep descriptions concise.** One to two sentences per task. Focus on what the participant does and what it measures.
-4. **Maintain alphabetical order** within each table (except where a different ordering is more logical).
-5. **Provide accurate references.** Use the original or most canonical citation.
-6. **Check links.** Ensure all URLs are working before submitting.
+4. **Provide accurate references.** Use the original or most canonical citation.
+5. **Check links.** Run `python scripts/check_links.py` before submitting.
+6. **Regenerate the README.** Always commit `README.md` alongside changes to its sources so reviewers can see the rendered effect.
 
 ## Submitting Changes
 
 1. Fork the repository.
-2. Create a new branch for your changes (`git checkout -b add-new-tasks`).
-3. Make your edits to `README.md`.
-4. Submit a pull request with a clear description of what you added or changed.
+2. Create a new branch (`git checkout -b add-new-tasks`).
+3. Edit `sections/`, `data/`, or the upstream `paradigms.json` / `community-implementations.json` as appropriate.
+4. Run `python scripts/build_readme.py` to regenerate `README.md`.
+5. Commit both the source change and the regenerated README.
+6. Submit a pull request with a clear description of what you added or changed.
 
 ## Reporting Issues
 

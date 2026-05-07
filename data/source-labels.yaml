@@ -1,0 +1,82 @@
+# Maps the short link labels rendered in the "Implementations" column
+# of each task table to keys in community-implementations.json.
+#
+# - `platform`: matches `implementation.platform`
+# - `provenance_source`: matches `implementation.provenance.source`
+#   (used as a tiebreaker when several entries share a platform)
+# - `priority`: lower = renders first when a paradigm has multiple sources
+# - `legend_url`: link rendered in the "Tasks by Cognitive Domain" intro
+#
+# Only platforms listed here are surfaced in the README. Anything else in
+# community-implementations.json (raw github, osf, searxng-search, etc.)
+# is intentionally hidden — it lives in the SPA, not the curated list.
+
+labels:
+  - short: PT
+    platform: psytoolkit
+    name: PsyToolkit
+    legend_url: https://www.psytoolkit.org/experiment-library/
+    priority: 10
+  - short: Ms
+    platform: inquisit
+    name: Millisecond/Inquisit
+    legend_url: https://www.millisecond.com/download/library/
+    priority: 20
+  - short: EF
+    platform: experiment-factory
+    name: Experiment Factory
+    legend_url: https://github.com/expfactory-experiments
+    priority: 30
+  - short: Go
+    platform: gorilla
+    name: Gorilla Open Materials
+    legend_url: https://app.gorilla.sc/openmaterials
+    priority: 40
+  - short: Pv
+    platform: pavlovia
+    name: Pavlovia
+    legend_url: https://pavlovia.org/explore
+    priority: 50
+    # Pavlovia returns hundreds of community experiments per paradigm.
+    # Cap how many we render in the README to keep rows readable.
+    max_per_paradigm: 1
+  - short: jP
+    platform: jspsych-demos
+    name: jsPsych demos
+    legend_url: https://github.com/jspsych/experiment-demos
+    priority: 60
+  - short: TB
+    platform: taskbeacon
+    name: TaskBeacon
+    legend_url: https://github.com/TaskBeacon
+    priority: 70
+  - short: NIH Toolbox
+    platform: nih-toolbox
+    name: NIH Toolbox
+    legend_url: https://www.healthmeasures.net/explore-measurement-systems/nih-toolbox
+    priority: 80
+  - short: Niv Lab
+    platform: niv-lab
+    name: Niv Lab jsPsych Demos
+    legend_url: https://nivlab.github.io/jspsych-demos/
+    priority: 90
+
+# Implementations whose `platform` is in this set are shown with a
+# free-form label derived from the implementation's `name` or URL host.
+# These are typically GitHub-hosted custom builds (PsychoPy, MATLAB, JS,
+# Unity, etc.). Rendered after the curated labels above.
+freeform_platforms:
+  - jspsych
+  - github
+  - osf
+  - otree
+
+# Filters applied to community-implementations.json before rendering.
+filters:
+  # Only show implementations whose verification passed (or has not been
+  # checked yet). Drops `failed` and `skipped`.
+  verification_results:
+    - passed
+    - unknown
+  # Only show entries whose paradigm slug exists in paradigms.json.
+  require_paradigm: true
