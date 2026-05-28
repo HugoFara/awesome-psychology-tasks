@@ -136,7 +136,20 @@ def render_platforms_table(rows: list[dict], variant: str) -> str:
     raise ValueError(f"unknown platforms variant: {variant}")
 
 
-def render_collections_table(rows: list[dict]) -> str:
+def load_pipeline_counts() -> dict:
+    """Optional sidecar — counts emitted by `pipeline/.../generate-awesome-counts.ts`.
+
+    Returns the empty dict if the file is absent, so a fresh clone can
+    still build the README without running the pipeline first.
+    """
+    path = DATA_DIR / "pipeline-counts.json"
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text())
+    return payload.get("counts", {})
+
+
+def render_collections_table(rows: list[dict], pipeline_counts: dict) -> str:
     header = (
         "| Collection | Platform | Approx. Tasks | Description |\n"
         "|------------|----------|---------------|-------------|\n"
@@ -144,9 +157,13 @@ def render_collections_table(rows: list[dict]) -> str:
     lines = []
     for r in rows:
         desc = _str(r["description"]).strip().replace("\n", " ")
+        approx = _str(r["approx_tasks"])
+        entry = pipeline_counts.get(_str(r["url"]))
+        if entry and isinstance(entry.get("count"), int):
+            approx = f"{approx} · **{entry['count']:,} indexed**"
         lines.append(
             f"| [{_str(r['name'])}]({_str(r['url'])}) | {_str(r['platform'])} | "
-            f"{_str(r['approx_tasks'])} | {desc} |"
+            f"{approx} | {desc} |"
         )
     return header + "\n".join(lines) + "\n"
 
@@ -305,6 +322,7 @@ def build(spa_data_dir: Path) -> str:
     platforms = load_yaml("platforms.yaml")
     collections = load_yaml("collections.yaml")
     labels_cfg = load_yaml("source-labels.yaml")
+    pipeline_counts = load_pipeline_counts()
 
     paradigm_slugs = {p["slug"] for p in paradigms}
     impls = filter_implementations(impls, labels_cfg.get("filters", {}), paradigm_slugs)
@@ -327,7 +345,7 @@ def build(spa_data_dir: Path) -> str:
     parts.append(load_section("30-limitations-and-gotchas.md"))
     parts.append("---\n")
     parts.append(load_section("40-collections-intro.md"))
-    parts.append(render_collections_table(collections["collections"]))
+    parts.append(render_collections_table(collections["collections"], pipeline_counts))
     parts.append("### Collaborative Replication Projects\n\n" + render_replication_table(collections["replication_projects"]))
     parts.append("### Data Repositories\n\n" + render_data_repos_table(collections["data_repositories"]))
     parts.append("---\n")

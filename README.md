@@ -140,21 +140,21 @@ Where to find ready-made experiment implementations.
 
 | Collection | Platform | Approx. Tasks | Description |
 |------------|----------|---------------|-------------|
-| [Millisecond Test Library](https://www.millisecond.com/download/library/) | Inquisit | 909 | Largest single library — covers nearly all domains of psychology. Browsable by [category](https://www.millisecond.com/download/library/). |
-| [Labvanced Templates](https://www.labvanced.com/content/research/en/tasks/) | Labvanced | 600+ | Pre-loaded templates across cognitive, developmental, and behavioral economics. |
-| [Pavlovia Explore](https://pavlovia.org/explore) | PsychoPy/jsPsych/lab.js | Thousands | Public experiments shared by the community on Pavlovia's GitLab. |
-| [Gorilla Open Materials](https://app.gorilla.sc/openmaterials) | Gorilla | Hundreds | Open-access experiments, tasks, and questionnaires. Clone directly into your Gorilla project. |
+| [Millisecond Test Library](https://www.millisecond.com/download/library/) | Inquisit | 909 · **573 indexed** | Largest single library — covers nearly all domains of psychology. Browsable by [category](https://www.millisecond.com/download/library/). |
+| [Labvanced Templates](https://www.labvanced.com/content/research/en/tasks/) | Labvanced | 600+ · **64 indexed** | Pre-loaded templates across cognitive, developmental, and behavioral economics. |
+| [Pavlovia Explore](https://pavlovia.org/explore) | PsychoPy/jsPsych/lab.js | Thousands · **600 indexed** | Public experiments shared by the community on Pavlovia's GitLab. |
+| [Gorilla Open Materials](https://app.gorilla.sc/openmaterials) | Gorilla | Hundreds · **131 indexed** | Open-access experiments, tasks, and questionnaires. Clone directly into your Gorilla project. |
 | [E-Prime Experiment Library](https://support.pstnet.com/hc/en-us/categories/115000077168) | E-Prime | 150+ | Ready-to-run experiments across core domains. |
-| [PEBL Test Battery](https://pebl.sourceforge.net) | PEBL | 100+ | Built-in battery of cognitive tests. |
-| [The Experiment Factory](https://expfactory.github.io/experiments/) | jsPsych/Docker | 80+ | Reproducible web-based experiments in Docker containers. [Individual repos](https://github.com/expfactory-experiments). |
-| [PsyToolkit Experiment Library](https://www.psytoolkit.org/experiment-library/) | PsyToolkit | 50+ | Free library of classic cognitive experiments — runnable in-browser with source code. |
+| [PEBL Test Battery](https://pebl.sourceforge.net) | PEBL | 100+ · **80 indexed** | Built-in battery of cognitive tests. |
+| [The Experiment Factory](https://expfactory.github.io/experiments/) | jsPsych/Docker | 80+ · **139 indexed** | Reproducible web-based experiments in Docker containers. [Individual repos](https://github.com/expfactory-experiments). |
+| [PsyToolkit Experiment Library](https://www.psytoolkit.org/experiment-library/) | PsyToolkit | 50+ · **58 indexed** | Free library of classic cognitive experiments — runnable in-browser with source code. |
 | [Testable Library](https://www.testable.org/library) | Testable | 50+ | Ready-made classic experiment templates. |
 | [jsPsych Contrib](https://github.com/jspsych/jspsych-contrib/tree/main/packages) | jsPsych | 30+ plugins | Community-contributed plugins and extensions (RDK, Corsi blocks, flanker, etc.). |
-| [jsPsych Experiment Demos](https://github.com/jspsych/experiment-demos) | jsPsych | Demos | Full example experiments from the jsPsych team. |
-| [Niv Lab jsPsych Demos](https://nivlab.github.io/jspsych-demos/) | jsPsych | Demos | Complete task implementations ([two-step](https://nivlab.github.io/jspsych-demos/tasks/two-step/experiment.html), [bandit](https://nivlab.github.io/jspsych-demos/tasks/3arm/experiment.html), etc.) with live interactive demos. |
+| [jsPsych Experiment Demos](https://github.com/jspsych/experiment-demos) | jsPsych | Demos · **4 indexed** | Full example experiments from the jsPsych team. |
+| [Niv Lab jsPsych Demos](https://nivlab.github.io/jspsych-demos/) | jsPsych | Demos · **22 indexed** | Complete task implementations ([two-step](https://nivlab.github.io/jspsych-demos/tasks/two-step/experiment.html), [bandit](https://nivlab.github.io/jspsych-demos/tasks/3arm/experiment.html), etc.) with live interactive demos. |
 | [PsychoPyParadigms](https://github.com/djangraw/PsychoPyParadigms) | PsychoPy | Varies | Community collection of PsychoPy experiment implementations. |
 | [NCMlab/CognitiveTasks](https://github.com/NCMlab/CognitiveTasks) | Various | Varies | Cognitive assessment tasks with GUIs. |
-| [TaskBeacon Tasks](https://github.com/TaskBeacon) | PsychoPy / jsPsych | Growing | Standardized paradigms (BART, Go/No-Go, Stop-Signal, AX-CPT, MID, Emotional Dot Probe, etc.) with structured formats. |
+| [TaskBeacon Tasks](https://github.com/TaskBeacon) | PsychoPy / jsPsych | Growing · **39 indexed** | Standardized paradigms (BART, Go/No-Go, Stop-Signal, AX-CPT, MID, Emotional Dot Probe, etc.) with structured formats. |
 
 ### Collaborative Replication Projects
 

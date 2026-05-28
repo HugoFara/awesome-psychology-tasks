@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-05-28T15:42:49.978Z",
+  "counts": {
+    "https://www.millisecond.com/download/library/": {
+      "count": 573,
+      "sources": [
+        "inquisit"
+      ],
+      "collection_name": "Millisecond Test Library"
+    },
+    "https://www.labvanced.com/content/research/en/tasks/": {
+      "count": 64,
+      "sources": [
+        "labvanced",
+        "labvanced-samples"
+      ],
+      "collection_name": "Labvanced Templates"
+    },
+    "https://pavlovia.org/explore": {
+      "count": 600,
+      "sources": [
+        "pavlovia"
+      ],
+      "collection_name": "Pavlovia Explore"
+    },
+    "https://app.gorilla.sc/openmaterials": {
+      "count": 131,
+      "sources": [
+        "gorilla"
+      ],
+      "collection_name": "Gorilla Open Materials"
+    },
+    "https://pebl.sourceforge.net": {
+      "count": 80,
+      "sources": [
+        "pebl"
+      ],
+      "collection_name": "PEBL Test Battery"
+    },
+    "https://expfactory.github.io/experiments/": {
+      "count": 139,
+      "sources": [
+        "expfactory"
+      ],
+      "collection_name": "The Experiment Factory"
+    },
+    "https://www.psytoolkit.org/experiment-library/": {
+      "count": 58,
+      "sources": [
+        "psytoolkit"
+      ],
+      "collection_name": "PsyToolkit Experiment Library"
+    },
+    "https://nivlab.github.io/jspsych-demos/": {
+      "count": 22,
+      "sources": [
+        "jspsych-demos-nivlab"
+      ],
+      "collection_name": "Niv Lab jsPsych Demos"
+    },
+    "https://github.com/jspsych/experiment-demos": {
+      "count": 4,
+      "sources": [
+        "jspsych-demos-official"
+      ],
+      "collection_name": "jsPsych Experiment Demos"
+    },
+    "https://github.com/TaskBeacon": {
+      "count": 39,
+      "sources": [
+        "psyflow-web"
+      ],
+      "collection_name": "TaskBeacon Tasks"
+    }
+  },
+  "unmappedRows": [
+    "E-Prime Experiment Library (https://support.pstnet.com/hc/en-us/categories/115000077168)",
+    "Testable Library (https://www.testable.org/library)",
+    "jsPsych Contrib (https://github.com/jspsych/jspsych-contrib/tree/main/packages)",
+    "PsychoPyParadigms (https://github.com/djangraw/PsychoPyParadigms)",
+    "NCMlab/CognitiveTasks (https://github.com/NCMlab/CognitiveTasks)"
+  ],
+  "missingDataSources": []
+}
