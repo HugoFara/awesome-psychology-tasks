@@ -81,11 +81,6 @@ collections:
     platform: PsychoPy / jsPsych
     approx_tasks: Growing
     description: Standardized paradigms (BART, Go/No-Go, Stop-Signal, AX-CPT, MID, Emotional Dot Probe, etc.) with structured formats.
-  - name: APA Online Psychology Lab
-    url: https://opl.apa.org
-    platform: Web-based
-    approx_tasks: Dozens
-    description: Peer-reviewed interactive experiments for teaching.
 
 replication_projects:
   - name: Many Labs 1
