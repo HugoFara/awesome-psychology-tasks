@@ -148,12 +148,12 @@ Where to find ready-made experiment implementations.
 | [PEBL Test Battery](https://pebl.sourceforge.net) | PEBL | 100+ · **80 indexed** | Built-in battery of cognitive tests. |
 | [The Experiment Factory](https://expfactory.github.io/experiments/) | jsPsych/Docker | 80+ · **139 indexed** | Reproducible web-based experiments in Docker containers. [Individual repos](https://github.com/expfactory-experiments). |
 | [PsyToolkit Experiment Library](https://www.psytoolkit.org/experiment-library/) | PsyToolkit | 50+ · **58 indexed** | Free library of classic cognitive experiments — runnable in-browser with source code. |
-| [Testable Library](https://www.testable.org/library) | Testable | 50+ | Ready-made classic experiment templates. |
+| [Testable Library](https://www.testable.org/library) | Testable | 50+ · **238 indexed** | Ready-made classic experiment templates. |
 | [jsPsych Contrib](https://github.com/jspsych/jspsych-contrib/tree/main/packages) | jsPsych | 30+ plugins | Community-contributed plugins and extensions (RDK, Corsi blocks, flanker, etc.). |
 | [jsPsych Experiment Demos](https://github.com/jspsych/experiment-demos) | jsPsych | Demos · **4 indexed** | Full example experiments from the jsPsych team. |
 | [Niv Lab jsPsych Demos](https://nivlab.github.io/jspsych-demos/) | jsPsych | Demos · **22 indexed** | Complete task implementations ([two-step](https://nivlab.github.io/jspsych-demos/tasks/two-step/experiment.html), [bandit](https://nivlab.github.io/jspsych-demos/tasks/3arm/experiment.html), etc.) with live interactive demos. |
-| [PsychoPyParadigms](https://github.com/djangraw/PsychoPyParadigms) | PsychoPy | Varies | Community collection of PsychoPy experiment implementations. |
-| [NCMlab/CognitiveTasks](https://github.com/NCMlab/CognitiveTasks) | Various | Varies | Cognitive assessment tasks with GUIs. |
+| [PsychoPyParadigms](https://github.com/djangraw/PsychoPyParadigms) | PsychoPy | Varies · **15 indexed** | Community collection of PsychoPy experiment implementations. |
+| [NCMlab/CognitiveTasks](https://github.com/NCMlab/CognitiveTasks) | Various | Varies · **12 indexed** | Cognitive assessment tasks with GUIs. |
 | [TaskBeacon Tasks](https://github.com/TaskBeacon) | PsychoPy / jsPsych | Growing · **39 indexed** | Standardized paradigms (BART, Go/No-Go, Stop-Signal, AX-CPT, MID, Emotional Dot Probe, etc.) with structured formats. |
 
 ### Collaborative Replication Projects

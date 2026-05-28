@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:42:49.978Z",
+  "generated_at": "2026-05-28T19:23:48.198Z",
   "counts": {
     "https://www.millisecond.com/download/library/": {
       "count": 573,
@@ -71,14 +71,32 @@
         "psyflow-web"
       ],
       "collection_name": "TaskBeacon Tasks"
+    },
+    "https://www.testable.org/library": {
+      "count": 238,
+      "sources": [
+        "testable"
+      ],
+      "collection_name": "Testable Library"
+    },
+    "https://github.com/djangraw/PsychoPyParadigms": {
+      "count": 15,
+      "sources": [
+        "psychopyparadigms"
+      ],
+      "collection_name": "PsychoPyParadigms"
+    },
+    "https://github.com/NCMlab/CognitiveTasks": {
+      "count": 12,
+      "sources": [
+        "ncmlab-cognitive-tasks"
+      ],
+      "collection_name": "NCMlab/CognitiveTasks"
     }
   },
   "unmappedRows": [
     "E-Prime Experiment Library (https://support.pstnet.com/hc/en-us/categories/115000077168)",
-    "Testable Library (https://www.testable.org/library)",
-    "jsPsych Contrib (https://github.com/jspsych/jspsych-contrib/tree/main/packages)",
-    "PsychoPyParadigms (https://github.com/djangraw/PsychoPyParadigms)",
-    "NCMlab/CognitiveTasks (https://github.com/NCMlab/CognitiveTasks)"
+    "jsPsych Contrib (https://github.com/jspsych/jspsych-contrib/tree/main/packages)"
   ],
   "missingDataSources": []
 }
