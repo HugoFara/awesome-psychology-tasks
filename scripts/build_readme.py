@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""Build README.md from section fragments + YAML data + the SPA's JSON.
+"""Build README.md from section fragments + YAML data + vendored JSON.
 
-Inputs:
-    sections/*.md                              — hand-edited prose
-    data/platforms.yaml                        — platform tables
-    data/collections.yaml                      — collection / replication / data tables
-    data/source-labels.yaml                    — short-label → platform mapping
-    <spa>/public/data/paradigms.json           — canonical paradigm list (with domains)
-    <spa>/public/data/community-implementations.json — known implementations
+Inputs (all under this repo — no cross-repo dependency):
+    sections/*.md                       — hand-edited prose
+    data/platforms.yaml                 — platform tables
+    data/collections.yaml               — collection / replication / data tables
+    data/source-labels.yaml             — short-label → platform mapping
+    data/paradigms.json                 — canonical paradigm list (with domains)
+    data/community-implementations.json — known implementations (pipeline output)
 
 Output:
     README.md (overwritten)
 
 Usage:
     python scripts/build_readme.py
-    python scripts/build_readme.py --data-dir ../library.nccr-ttf-ddg.ch/public/data
-    python scripts/build_readme.py --check    # exit 1 if README.md is out of date
+    python scripts/build_readme.py --data-dir <dir>   # override JSON source
+    python scripts/build_readme.py --check            # exit 1 if README.md is out of date
 """
 
 from __future__ import annotations
@@ -32,7 +32,10 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 SECTIONS_DIR = ROOT / "sections"
 DATA_DIR = ROOT / "data"
-DEFAULT_SPA_DATA = ROOT.parent / "library.nccr-ttf-ddg.ch" / "public" / "data"
+# paradigms.json + community-implementations.json are vendored into data/ — the
+# pipeline writes community-implementations.json there directly; paradigms.json
+# is a snapshot. `--data-dir` overrides this for ad-hoc runs against another source.
+DEFAULT_DATA_DIR = DATA_DIR
 README = ROOT / "README.md"
 
 # Order of cognitive-domain sections in the README.
@@ -316,9 +319,9 @@ def build_toc(domain_headings: list[str]) -> str:
 
 # ── Assembly ────────────────────────────────────────────────────────────────
 
-def build(spa_data_dir: Path) -> str:
-    paradigms = json.loads((spa_data_dir / "paradigms.json").read_text())
-    impls = json.loads((spa_data_dir / "community-implementations.json").read_text())
+def build(data_dir: Path) -> str:
+    paradigms = json.loads((data_dir / "paradigms.json").read_text())
+    impls = json.loads((data_dir / "community-implementations.json").read_text())
     platforms = load_yaml("platforms.yaml")
     collections = load_yaml("collections.yaml")
     labels_cfg = load_yaml("source-labels.yaml")
@@ -367,8 +370,9 @@ def build(spa_data_dir: Path) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", type=Path, default=DEFAULT_SPA_DATA,
-                        help="SPA public/data directory (default: %(default)s)")
+    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR,
+                        help="dir holding paradigms.json + community-implementations.json "
+                             "(default: %(default)s)")
     parser.add_argument("--check", action="store_true",
                         help="Exit 1 if README.md differs from generated output")
     parser.add_argument("--output", type=Path, default=README,
@@ -376,7 +380,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if not args.data_dir.exists():
-        print(f"error: SPA data dir not found: {args.data_dir}", file=sys.stderr)
+        print(f"error: data dir not found: {args.data_dir}", file=sys.stderr)
         return 2
 
     generated = build(args.data_dir)
