@@ -59,6 +59,19 @@ DOMAIN_ORDER = [
 
 STATUS_BADGE = {"active": "🟢", "maintained": "🟡", "legacy": "🔴"}
 
+# Validation state of a paradigm spec — the HUMAN-review axis. Rendered loudly so an
+# unreviewed claim is never mistaken for an endorsement (the catalog's north star).
+VALIDATION_BADGE = {
+    "sourced": "🔵 `sourced` — unreviewed",
+    "corroborated": "🟣 `corroborated`",
+    "expert-annotated": "🟢 `expert-annotated`",
+    "contested": "🟠 `contested`",
+}
+
+# verify:task conformance verdict — the MACHINE instrumentation axis (orthogonal to
+# validation state). A green verdict is an instrumentation guarantee, not human review.
+VERDICT_BADGE = {"conforms": "✅ CONFORMS", "non-conforming": "❌ NON-CONFORMING"}
+
 
 def _str(v: Any) -> str:
     """Coerce a YAML-loaded scalar to a string, mapping bool → Yes/No.
@@ -150,6 +163,69 @@ def load_pipeline_counts() -> dict:
         return {}
     payload = json.loads(path.read_text())
     return payload.get("counts", {})
+
+
+def load_specs(data_dir: Path) -> dict:
+    """Optional vendored paradigm specs — written by the harness's `graduate` step.
+
+    Returns the empty dict if absent, so a fresh clone still builds the README
+    without the spec layer.
+    """
+    path = data_dir / "specs.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text())
+
+
+def render_specs_section(specs: dict) -> str:
+    """Render the paradigm-spec index + audited reference instances.
+
+    Two tables, two axes kept visibly distinct: the spec catalog carries the
+    HUMAN-review validation state (loud), and the audited-instances table carries the
+    MACHINE verify:task verdict. A green verdict never raises the validation state.
+    """
+    records = specs.get("specs", [])
+    if not records:
+        return ""
+
+    out: list[str] = []
+    out.append("| Paradigm | Family | Defining contrast | Validation | Executable test |")
+    out.append("|----------|--------|-------------------|------------|-----------------|")
+    for s in sorted(records, key=lambda r: _str(r["name"]).lower()):
+        validation = VALIDATION_BADGE.get(_str(s.get("validationState")), _str(s.get("validationState")))
+        executable = "✓ `verify:task`" if s.get("executableSpec") else "—"
+        out.append(
+            f"| {_str(s['name'])} | {_str(s['family'])} | `{_str(s.get('definingContrast'))}` | "
+            f"{validation} | {executable} |"
+        )
+    table = "\n".join(out) + "\n"
+
+    audited = specs.get("auditedInstances", [])
+    if not audited:
+        return table
+
+    sub: list[str] = [
+        "",
+        "### Audited reference instances",
+        "",
+        "Real third-party implementations driven end-to-end through the executable spec "
+        "(`verify:task`). The verdict is a **machine** instrumentation check — it says an "
+        "implementation does (or does not) carry the paradigm's defining contrast and scoring; "
+        "it is **not** a statement about the spec's human-review state, nor about construct validity.",
+        "",
+        "| Implementation | Platform | Paradigm | `verify:task` | Notes |",
+        "|----------------|----------|----------|---------------|-------|",
+    ]
+    for a in audited:
+        verdict = VERDICT_BADGE.get(_str(a.get("verdict")), _str(a.get("verdict")))
+        reason = _str(a.get("reason"))
+        if a.get("verdict") == "non-conforming" and reason:
+            verdict += f" ({reason})"
+        note = _str(a.get("caveat") or a.get("note")).replace("\n", " ").replace("|", "\\|")
+        sub.append(
+            f"| {_str(a['implementation'])} | {_str(a['platform'])} | {_str(a['spec'])} | {verdict} | {note} |"
+        )
+    return table + "\n".join(sub) + "\n"
 
 
 def render_collections_table(rows: list[dict], pipeline_counts: dict) -> str:
@@ -304,6 +380,7 @@ def build_toc(domain_headings: list[str]) -> str:
         ]),
         ("Platform Limitations & Gotchas", "platform-limitations--gotchas", []),
         ("Repositories & Collections", "repositories--collections", []),
+        ("Paradigm Specifications", "paradigm-specifications", []),
         ("Tasks by Cognitive Domain", "tasks-by-cognitive-domain",
          [(d, slugify_anchor(d)) for d in domain_headings]),
         ("Contributing", "contributing", []),
@@ -326,6 +403,7 @@ def build(data_dir: Path) -> str:
     collections = load_yaml("collections.yaml")
     labels_cfg = load_yaml("source-labels.yaml")
     pipeline_counts = load_pipeline_counts()
+    specs = load_specs(data_dir)
 
     paradigm_slugs = {p["slug"] for p in paradigms}
     impls = filter_implementations(impls, labels_cfg.get("filters", {}), paradigm_slugs)
@@ -351,6 +429,11 @@ def build(data_dir: Path) -> str:
     parts.append(render_collections_table(collections["collections"], pipeline_counts))
     parts.append("### Collaborative Replication Projects\n\n" + render_replication_table(collections["replication_projects"]))
     parts.append("### Data Repositories\n\n" + render_data_repos_table(collections["data_repositories"]))
+    specs_section = render_specs_section(specs)
+    if specs_section:
+        parts.append("---\n")
+        parts.append(load_section("45-paradigm-specs-intro.md"))
+        parts.append(specs_section)
     parts.append("---\n")
     parts.append(load_section("50-tasks-by-domain-intro.md"))
     for domain in DOMAIN_ORDER:

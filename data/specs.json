@@ -1,0 +1,351 @@
+{
+  "_generatedBy": "paradigm-test-harness/spec/graduate.mjs — do not edit by hand; re-run `npm run graduate`",
+  "schemaVersion": 10,
+  "validationStateModel": [
+    "sourced",
+    "corroborated",
+    "expert-annotated",
+    "contested"
+  ],
+  "honestyNote": "Specs are LLM-assisted / contributor-entered drafts, UNREVIEWED by a domain expert (validationState: sourced). The executableSpec flag and reference-instance verdicts are MACHINE instrumentation checks (the verify:task conformance result) — they attest that an implementation instantiates the paradigm contrast and scoring, NOT that the spec is the right operationalisation. A green check never raises the human-review state.",
+  "specCount": 11,
+  "auditedInstanceCount": 9,
+  "specs": [
+    {
+      "slug": "eriksen-flanker-task",
+      "name": "Eriksen Flanker Task",
+      "family": "congruency",
+      "specVersion": "1",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "flanker-effect-rt (condition-difference)",
+      "abstract": "Participants make a speeded two-choice response to the identity or direction of a central target while ignoring task-irrelevant flankers that map to the same response (congruent) or the competing response (incongruent). The reaction-time and accuracy cost of incongruent flankers indexes the efficiency of selective attention and response-level conflict resolution.",
+      "originReference": {
+        "citation": "Eriksen, B. A., & Eriksen, C. W. (1974). Effects of noise letters upon the identification of a target letter in a nonsearch task. Perception & Psychophysics, 16(1), 143-149.",
+        "doi": "10.3758/bf03203267"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "demos/eriksen_flanker",
+          "platform": "Pavlovia / PsychoJS",
+          "verdict": "conforms",
+          "violations": 0,
+          "note": "congruency condition logged, not inferred — the namesake paradigm validating against its own contract",
+          "audit": "subjects/pavlovia-flanker.md"
+        },
+        {
+          "implementation": "arrow-direction-task",
+          "platform": "NCCR / jsPsych",
+          "verdict": "non-conforming",
+          "reason": "contrast-not-logged",
+          "note": "an arrow choice-RT task with no congruency manipulation — looks like a flanker, isn't",
+          "audit": "subjects/arrow-direction-task.md"
+        }
+      ]
+    },
+    {
+      "slug": "stroop-task",
+      "name": "Stroop Task",
+      "family": "congruency",
+      "specVersion": "1",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "stroop-effect-rt (condition-difference)",
+      "abstract": "Participants report the ink colour of a printed word while ignoring the word's meaning. When the word names a different colour than its ink (incongruent, e.g. RED in blue ink) responses are slower and less accurate than when word and ink agree (congruent). The cost indexes selective attention and the inhibition of a prepotent reading response.",
+      "originReference": {
+        "citation": "Stroop, J. R. (1935). Studies of interference in serial verbal reactions. Journal of Experimental Psychology, 18(6), 643-662.",
+        "doi": "10.1037/h0054651"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "onlineworkshopstroop (dejan.draschkow)",
+          "platform": "Pavlovia / PsychoJS",
+          "verdict": "conforms",
+          "violations": 0,
+          "note": "a classic 3-colour Stroop; same validator/analysis as the Flanker — the contract is framework-agnostic",
+          "audit": "subjects/pavlovia-stroop.md"
+        }
+      ]
+    },
+    {
+      "slug": "simon-task",
+      "name": "Simon Task",
+      "family": "congruency",
+      "specVersion": "1",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "simon-effect-rt (condition-difference)",
+      "abstract": "Participants make a left/right response to a non-spatial feature of a stimulus (e.g. its colour) while ignoring the stimulus's left or right location. Responses are slower and less accurate when stimulus location and response side conflict (incongruent) than when they correspond (congruent), even though location is irrelevant. The cost indexes spatial stimulus–response compatibility and response-level conflict.",
+      "originReference": {
+        "citation": "Simon, J. R., & Rudell, A. P. (1967). Auditory S-R compatibility: The effect of an irrelevant cue on information processing. Journal of Applied Psychology, 51(3), 300-304.",
+        "doi": "10.1037/h0020586"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "demos/butterfly_simon",
+          "platform": "Pavlovia / PsychoJS",
+          "verdict": "non-conforming",
+          "reason": "contrast-not-logged",
+          "note": "a real Simon, but congruency is never logged — the not-logged/semantic floor; conforms only if the author emits the derived congruency",
+          "audit": "subjects/butterfly-simon.md"
+        }
+      ]
+    },
+    {
+      "slug": "go-no-go",
+      "name": "Go/No-Go",
+      "family": "go-no-go",
+      "specVersion": "2",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "commission-error-rate (selective-suppression)",
+      "abstract": "Participants respond as fast as possible to frequent 'go' stimuli and withhold the response to rare 'no-go' stimuli. Because go trials predominate, responding becomes prepotent; correctly withholding on a no-go trial requires inhibitory control. Responses on no-go trials (commission errors) index failures of inhibition; the speed of go responses and the rate of go-trial omissions index the prepotent tendency and sustained attention.",
+      "originReference": {
+        "citation": "Gomez, P., Ratcliff, R., & Perea, M. (2007). A model of the go/no-go task. Journal of Experimental Psychology: General, 136(3), 389-413.",
+        "doi": "10.1037/0096-3445.136.3.389"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "cpt-cities-mountains",
+          "platform": "NCCR / jsPsych",
+          "verdict": "conforms",
+          "violations": 0,
+          "caveat": "a gradual-onset CPT (gradCPT) — RT is on a different clock; a curator should tag the variant",
+          "audit": "subjects/cpt-cities-mountains.md"
+        },
+        {
+          "implementation": "demos/go_nogo",
+          "platform": "Pavlovia / PsychoJS",
+          "verdict": "conforms",
+          "violations": 0,
+          "note": "a newer PsychoJS (2023.2.3); the integration is not congruency-specific",
+          "audit": "subjects/pavlovia-gonogo.md"
+        }
+      ]
+    },
+    {
+      "slug": "stop-signal-task",
+      "name": "Stop-Signal Task",
+      "family": "stop-signal",
+      "specVersion": "3",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "ssrt (race-model)",
+      "abstract": "Participants perform a speeded go task and, on a minority of trials, a stop signal appears after the go stimulus at a variable stop-signal delay (SSD), instructing them to cancel the already-initiated response. Whether the response is cancelled depends on a race between a go process and a stop process; the latency of the stop process — the stop-signal reaction time (SSRT) — is estimated under the race model and is the primary index of response inhibition. The SSD is typically tracked by a staircase that converges on ~50% successful stopping.",
+      "originReference": {
+        "citation": "Logan, G. D., & Cowan, W. B. (1984). On the ability to inhibit thought and action: A theory of an act of control. Psychological Review, 91(3), 295-327.",
+        "doi": "10.1037/0033-295X.91.3.295"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "TaskBeacon H000012-sst",
+          "platform": "psyflow-web / jsPsych",
+          "verdict": "conforms",
+          "violations": 0,
+          "caveat": "SSRT is estimable end-to-end, but a synthetic oracle isn't a race process — the value is a wiring check, not a validity claim",
+          "audit": "subjects/taskbeacon-sst.md"
+        }
+      ]
+    },
+    {
+      "slug": "n-back",
+      "name": "N-back",
+      "family": "n-back",
+      "specVersion": "4",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "d-prime (load-response)",
+      "abstract": "A continuous stream of stimuli is presented one at a time; on each item the participant signals whether it matches the item presented n positions earlier. Holding and continuously updating the last n items taxes working memory, and detection sensitivity falls as the load n rises. Performance is scored with signal-detection theory: a 'match' to a true n-back item is a hit, a 'match' to a non-matching item is a false alarm, and the bias-corrected sensitivity d' is the primary index. The load-dependent decline in d' — not mere match detection — is the paradigm's signature.",
+      "originReference": {
+        "citation": "Kirchner, W. K. (1958). Age differences in short-term retention of rapidly changing information. Journal of Experimental Psychology, 55(4), 352-358.",
+        "doi": "10.1037/h0043688"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "demos/n_back",
+          "platform": "Pavlovia / PsychoJS",
+          "verdict": "conforms",
+          "violations": 0,
+          "note": "mouse-driven; oracle policy recovered, d' ≈ 3.08 — an n-back the survey's static probe could only call undeterminable, shown conformant when driven",
+          "audit": "subjects/pavlovia-nback.md"
+        }
+      ]
+    },
+    {
+      "slug": "task-switching",
+      "name": "Task Switching",
+      "family": "task-switching",
+      "specVersion": "5",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "switch-cost-rt (condition-difference)",
+      "abstract": "Two simple judgements (e.g. is a digit odd/even, or less/greater than five) share the same two response keys; on each trial a cue indicates which judgement to make. Responses are slower and more error-prone on trials where the required task differs from the previous trial (a switch) than where it repeats — the switch cost — indexing the cost of reconfiguring task set. Whether a trial is a switch or a repeat is not a property of its stimulus but of its position in the sequence, which is what makes this its own family.",
+      "originReference": {
+        "citation": "Rogers, R. D., & Monsell, S. (1995). Costs of a predictable switch between simple cognitive tasks. Journal of Experimental Psychology: General, 124(2), 207-231.",
+        "doi": "10.1037/0096-3445.124.2.207"
+      },
+      "referenceInstances": []
+    },
+    {
+      "slug": "sequential-congruency",
+      "name": "Sequential Congruency (Gratton effect)",
+      "family": "sequential-congruency",
+      "specVersion": "6",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "congruency-sequence-effect (interaction)",
+      "abstract": "Run on a standard congruency task (here an arrow Flanker; equally a Simon or Stroop), with the trial order preserved, the congruency cost on a trial is smaller when the previous trial was incongruent — the congruency sequence effect (Gratton effect / conflict adaptation). The headline measure is therefore an interaction of previous-trial congruency with current-trial congruency on RT: a difference of two difference scores, whose unit of analysis is a trial pair. Whether a trial follows a congruent or an incongruent one is not a property of its stimulus but of its position in the sequence, which the implementation must label from the trial order. The effect is read as a signature of conflict-driven control, but only under designs that control feature-repetition and contingency confounds — an unusually strong validity condition that the spec records explicitly.",
+      "originReference": {
+        "citation": "Gratton, G., Coles, M. G. H., & Donchin, E. (1992). Optimizing the use of information: Strategic control of activation of responses. Journal of Experimental Psychology: General, 121(4), 480-506.",
+        "doi": "10.1037/0096-3445.121.4.480"
+      },
+      "referenceInstances": []
+    },
+    {
+      "slug": "motion-coherence-discrimination",
+      "name": "Motion Coherence Discrimination (Random-Dot Kinematogram)",
+      "family": "psychophysics",
+      "specVersion": "9",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "coherence-threshold (psychometric)",
+      "abstract": "A cloud of moving dots is shown; a fraction of them — the coherence — drifts coherently in one direction (left or right) while the rest move at random, and the observer reports the net direction. Coherence is the CONTINUOUS independent variable, varied trial to trial; direction-discrimination accuracy rises with it, tracing a psychometric function. The primary measure is not an accuracy or a difference of cell means but a THRESHOLD — the coherence at a criterion accuracy (~75% for two-alternative forced choice) — recovered by fitting the psychometric function to the (coherence, correct) data. This is the catalog's first continuous-level paradigm: the threshold is a fitted point in stimulus units, and it is undefined unless the tested levels bracket it and performance is not flat.",
+      "originReference": {
+        "citation": "Newsome, W. T., & Paré, E. B. (1988). A selective impairment of motion perception following lesions of the middle temporal visual area (MT). The Journal of Neuroscience, 8(6), 2201-2211.",
+        "doi": "10.1523/jneurosci.08-06-02201.1988"
+      },
+      "referenceInstances": []
+    },
+    {
+      "slug": "color-delayed-estimation",
+      "name": "Color Delayed Estimation (Visual Working Memory)",
+      "family": "continuous-report",
+      "specVersion": "9",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "guess-rate (mixture-decomposition)",
+      "abstract": "A set of coloured squares is shown briefly; after a delay one location is probed and the observer reproduces its colour on a continuous colour wheel. The feature is a hue ANGLE and the response is a point on a circle, so the outcome is a continuous circular ERROR — there is NO correct/incorrect. The headline analysis is not the mean error but a von Mises MIXTURE decomposition of the error distribution (Zhang & Luck 2008; Bays, Catalao & Husain 2009): a target-centred von Mises (memory, with a precision), a uniform component (guessing — the probability the item was not in memory), and a von Mises around the NON-target items (swaps / misbinding). This is the catalog's first family with no correctness; the contract drops `correct` and carries `responseErrorRad` and the non-target feature values, the latter so swaps can be modelled rather than misattributed to guessing.",
+      "originReference": {
+        "citation": "Wilken, P., & Ma, W. J. (2004). A detection theory account of change detection. Journal of Vision, 4(12), 11.",
+        "doi": "10.1167/4.12.11"
+      },
+      "referenceInstances": []
+    },
+    {
+      "slug": "lexical-decision-task",
+      "name": "Lexical Decision Task",
+      "family": "speeded-classification",
+      "specVersion": "10",
+      "validationState": "sourced",
+      "executableSpec": true,
+      "definingContrast": "lexicality-effect-rt (condition-difference)",
+      "abstract": "A letter string is shown and the participant classifies it as a real WORD or a NONWORD by a speeded keypress. It is the canonical instance of the speeded-classification family — a stimulus, a speeded categorical response, scored by RT and accuracy — and the first catalog-matched family the harness specs (the two subject audits found the NCCR catalog is mostly such language/perception tasks, which none of the cognitive-control families covered). The defining contrast is the lexicality effect: words are classified faster than nonwords, because a real word finds a lexical entry while a nonword requires an exhaustive (failing) search. Word frequency adds a parametric layer (high-frequency words faster than low). The conditions ('word'/'nonword') are TASK-DEFINED categories, not a paradigm-fixed enum — the contract novelty of this family, of which the congruency contract (congruent/incongruent) is a special case.",
+      "originReference": {
+        "citation": "Rubenstein, H., Garfield, L., & Millikan, J. A. (1970). Homographic entries in the internal lexicon. Journal of Verbal Learning and Verbal Behavior, 9(5), 487-494.",
+        "doi": "10.1016/s0022-5371(70)80091-3"
+      },
+      "referenceInstances": [
+        {
+          "implementation": "lexical-decision-task",
+          "platform": "NCCR / jsPsych",
+          "verdict": "conforms",
+          "violations": 0,
+          "note": "the clean centre — lexicality effect computable and recovered, nothing for a human to flag about the wiring",
+          "audit": "subjects/lexical-decision-task.md"
+        }
+      ]
+    }
+  ],
+  "auditedInstances": [
+    {
+      "spec": "eriksen-flanker-task",
+      "family": "congruency",
+      "implementation": "demos/eriksen_flanker",
+      "platform": "Pavlovia / PsychoJS",
+      "verdict": "conforms",
+      "violations": 0,
+      "note": "congruency condition logged, not inferred — the namesake paradigm validating against its own contract",
+      "audit": "subjects/pavlovia-flanker.md"
+    },
+    {
+      "spec": "eriksen-flanker-task",
+      "family": "congruency",
+      "implementation": "arrow-direction-task",
+      "platform": "NCCR / jsPsych",
+      "verdict": "non-conforming",
+      "reason": "contrast-not-logged",
+      "note": "an arrow choice-RT task with no congruency manipulation — looks like a flanker, isn't",
+      "audit": "subjects/arrow-direction-task.md"
+    },
+    {
+      "spec": "stroop-task",
+      "family": "congruency",
+      "implementation": "onlineworkshopstroop (dejan.draschkow)",
+      "platform": "Pavlovia / PsychoJS",
+      "verdict": "conforms",
+      "violations": 0,
+      "note": "a classic 3-colour Stroop; same validator/analysis as the Flanker — the contract is framework-agnostic",
+      "audit": "subjects/pavlovia-stroop.md"
+    },
+    {
+      "spec": "simon-task",
+      "family": "congruency",
+      "implementation": "demos/butterfly_simon",
+      "platform": "Pavlovia / PsychoJS",
+      "verdict": "non-conforming",
+      "reason": "contrast-not-logged",
+      "note": "a real Simon, but congruency is never logged — the not-logged/semantic floor; conforms only if the author emits the derived congruency",
+      "audit": "subjects/butterfly-simon.md"
+    },
+    {
+      "spec": "go-no-go",
+      "family": "go-no-go",
+      "implementation": "cpt-cities-mountains",
+      "platform": "NCCR / jsPsych",
+      "verdict": "conforms",
+      "violations": 0,
+      "caveat": "a gradual-onset CPT (gradCPT) — RT is on a different clock; a curator should tag the variant",
+      "audit": "subjects/cpt-cities-mountains.md"
+    },
+    {
+      "spec": "go-no-go",
+      "family": "go-no-go",
+      "implementation": "demos/go_nogo",
+      "platform": "Pavlovia / PsychoJS",
+      "verdict": "conforms",
+      "violations": 0,
+      "note": "a newer PsychoJS (2023.2.3); the integration is not congruency-specific",
+      "audit": "subjects/pavlovia-gonogo.md"
+    },
+    {
+      "spec": "stop-signal-task",
+      "family": "stop-signal",
+      "implementation": "TaskBeacon H000012-sst",
+      "platform": "psyflow-web / jsPsych",
+      "verdict": "conforms",
+      "violations": 0,
+      "caveat": "SSRT is estimable end-to-end, but a synthetic oracle isn't a race process — the value is a wiring check, not a validity claim",
+      "audit": "subjects/taskbeacon-sst.md"
+    },
+    {
+      "spec": "n-back",
+      "family": "n-back",
+      "implementation": "demos/n_back",
+      "platform": "Pavlovia / PsychoJS",
+      "verdict": "conforms",
+      "violations": 0,
+      "note": "mouse-driven; oracle policy recovered, d' ≈ 3.08 — an n-back the survey's static probe could only call undeterminable, shown conformant when driven",
+      "audit": "subjects/pavlovia-nback.md"
+    },
+    {
+      "spec": "lexical-decision-task",
+      "family": "speeded-classification",
+      "implementation": "lexical-decision-task",
+      "platform": "NCCR / jsPsych",
+      "verdict": "conforms",
+      "violations": 0,
+      "note": "the clean centre — lexicality effect computable and recovered, nothing for a human to flag about the wiring",
+      "audit": "subjects/lexical-decision-task.md"
+    }
+  ]
+}

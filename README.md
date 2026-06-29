@@ -12,6 +12,7 @@
   - [Hosting & Backend Services](#hosting--backend-services)
 - [Platform Limitations & Gotchas](#platform-limitations--gotchas)
 - [Repositories & Collections](#repositories--collections)
+- [Paradigm Specifications](#paradigm-specifications)
 - [Tasks by Cognitive Domain](#tasks-by-cognitive-domain)
   - [Attention](#attention)
   - [Memory](#memory)
@@ -170,6 +171,70 @@ Where to find ready-made experiment implementations.
 |------------|-----|-------------|
 | [Databrary](https://databrary.org) | databrary.org | Digital data library for video/audio behavioral research data (access-controlled). |
 | [Open Science Framework](https://osf.io) | osf.io | General-purpose repository for research materials, data, and preprints. |
+
+---
+
+## Paradigm Specifications
+
+The catalog's core is shifting from *where a task is implemented* to *what it means
+to implement the paradigm correctly*. A **paradigm specification** records the
+construct(s) a paradigm operationalises, its **defining contrast** (the
+manipulation and the prediction that make it that paradigm and not another), the
+design parameters that materially move results, and an **executable test** — a
+machine-checkable definition of the contrast and scoring.
+
+**Two independent signals, never conflated.** Read each spec on two axes:
+
+- **Validation state** — *has a human expert reviewed the measurement claims?* Every
+  spec below is **`sourced`**: literature-linked, LLM-assisted or contributor-drafted,
+  and **unreviewed**. This is the honest default and already useful; it is **not**
+  an endorsement. Expert review would raise it to `corroborated` / `expert-annotated`,
+  or mark it `contested` — that ladder is the project's moat, and nothing here has
+  climbed it yet.
+- **Executable spec** — *does an implementation instantiate the contrast and scoring?*
+  This is a **machine** check (a synthetic responder with a known policy is driven
+  through the real task and the contrast must be encoded, scored, and recovered). A
+  passing check is a genuine instrumentation guarantee — categorically stronger than
+  "the link loads" — but it is **not** human validation. A green badge never raises
+  the validation state.
+
+The wall between them is deliberate and irreducible: the executable test confirms a
+task is wired the way the spec says; it cannot tell you the spec is the *right*
+operationalisation of the construct. That judgement stays human.
+
+Specs and their executable contracts are produced by the paradigm-test-harness (the
+catalog's executable-spec tooling) and vendored here as `data/specs.json`; this
+catalog only *reads* the proven signal — it never hosts task code, stimuli, or data.
+
+| Paradigm | Family | Defining contrast | Validation | Executable test |
+|----------|--------|-------------------|------------|-----------------|
+| Color Delayed Estimation (Visual Working Memory) | continuous-report | `guess-rate (mixture-decomposition)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Eriksen Flanker Task | congruency | `flanker-effect-rt (condition-difference)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Go/No-Go | go-no-go | `commission-error-rate (selective-suppression)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Lexical Decision Task | speeded-classification | `lexicality-effect-rt (condition-difference)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Motion Coherence Discrimination (Random-Dot Kinematogram) | psychophysics | `coherence-threshold (psychometric)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| N-back | n-back | `d-prime (load-response)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Sequential Congruency (Gratton effect) | sequential-congruency | `congruency-sequence-effect (interaction)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Simon Task | congruency | `simon-effect-rt (condition-difference)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Stop-Signal Task | stop-signal | `ssrt (race-model)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Stroop Task | congruency | `stroop-effect-rt (condition-difference)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+| Task Switching | task-switching | `switch-cost-rt (condition-difference)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
+
+### Audited reference instances
+
+Real third-party implementations driven end-to-end through the executable spec (`verify:task`). The verdict is a **machine** instrumentation check — it says an implementation does (or does not) carry the paradigm's defining contrast and scoring; it is **not** a statement about the spec's human-review state, nor about construct validity.
+
+| Implementation | Platform | Paradigm | `verify:task` | Notes |
+|----------------|----------|----------|---------------|-------|
+| demos/eriksen_flanker | Pavlovia / PsychoJS | eriksen-flanker-task | ✅ CONFORMS | congruency condition logged, not inferred — the namesake paradigm validating against its own contract |
+| arrow-direction-task | NCCR / jsPsych | eriksen-flanker-task | ❌ NON-CONFORMING (contrast-not-logged) | an arrow choice-RT task with no congruency manipulation — looks like a flanker, isn't |
+| onlineworkshopstroop (dejan.draschkow) | Pavlovia / PsychoJS | stroop-task | ✅ CONFORMS | a classic 3-colour Stroop; same validator/analysis as the Flanker — the contract is framework-agnostic |
+| demos/butterfly_simon | Pavlovia / PsychoJS | simon-task | ❌ NON-CONFORMING (contrast-not-logged) | a real Simon, but congruency is never logged — the not-logged/semantic floor; conforms only if the author emits the derived congruency |
+| cpt-cities-mountains | NCCR / jsPsych | go-no-go | ✅ CONFORMS | a gradual-onset CPT (gradCPT) — RT is on a different clock; a curator should tag the variant |
+| demos/go_nogo | Pavlovia / PsychoJS | go-no-go | ✅ CONFORMS | a newer PsychoJS (2023.2.3); the integration is not congruency-specific |
+| TaskBeacon H000012-sst | psyflow-web / jsPsych | stop-signal-task | ✅ CONFORMS | SSRT is estimable end-to-end, but a synthetic oracle isn't a race process — the value is a wiring check, not a validity claim |
+| demos/n_back | Pavlovia / PsychoJS | n-back | ✅ CONFORMS | mouse-driven; oracle policy recovered, d' ≈ 3.08 — an n-back the survey's static probe could only call undeterminable, shown conformant when driven |
+| lexical-decision-task | NCCR / jsPsych | lexical-decision-task | ✅ CONFORMS | the clean centre — lexicality effect computable and recovered, nothing for a human to flag about the wiring |
 
 ---
 
