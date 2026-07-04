@@ -593,3 +593,5 @@ This project was developed at [NCCR Evolving Language](https://evolvinglanguage.
 ## License
 
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+- [Psychology Laws Awesome](https://github.com/daligao/psychology-laws-awesome) - Interactive open-source resource for psychology laws and cognitive biases.
