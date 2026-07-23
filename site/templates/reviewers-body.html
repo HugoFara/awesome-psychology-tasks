@@ -1,0 +1,87 @@
+<section>
+  <p class="eyebrow">Open call</p>
+  <h1>Review one spec. Three claims. An afternoon.</h1>
+  <p class="lede">Every paradigm specification in this catalog is currently <code>sourced</code> &mdash;
+  literature-linked, drafted with LLM assistance, and unreviewed by a named expert. We are looking for
+  the first reviewers to change that, one spec at a time.</p>
+</section>
+
+<section class="panel panel--call">
+  <h2>What we are asking for</h2>
+  <p>Not an endorsement of the project. Not a paper. One spec, read against <strong>three separable
+  claims</strong>, each signed or contested by name. The mechanical work is done: the spec is drafted,
+  the references are DOI-verified, the executable contract runs, and a dossier lays out exactly what
+  the machine can and cannot show you for each claim.</p>
+  <ul>
+    <li><strong>You review the spec, never a passing machine check.</strong> A green conformance result
+    is an instrumentation guarantee. It is an input to your judgment, never a substitute for it.</li>
+    <li><strong>The claims are separable.</strong> They need different expertise. Attesting one and
+    contesting another is an honest, useful outcome &mdash; not a failure.</li>
+    <li><strong>Every attestation is named, dated, scoped, and revocable.</strong> Your sign-off states
+    what it does and does not cover, and can be moved to <code>contested</code> later.</li>
+    <li><strong>Nothing is published in your name without your say-so</strong>, and reviewing a spec
+    here makes no claim about any public task library.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="section-head">The three claims</h2>
+  <div class="grid">
+    <article class="card">
+      <p class="eyebrow">Claim 1</p>
+      <h3>Contrast identification</h3>
+      <p><em>Does the defining contrast correctly identify the paradigm &mdash; did we draft the right
+      operationalisation?</em></p>
+      <p class="small">Whether <em>this</em> contrast is the defining one, versus the alternatives, is
+      the part no test can settle. You are reviewing our authorship.</p>
+      <div class="card__foot">Typically a cognitive psychologist (attention / control)</div>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Claim 2</p>
+      <h3>Construct operationalisation</h3>
+      <p><em>Is the contrast a defensible measure of the construct it is named for?</em></p>
+      <p class="small">The instrumentation layer is silent here by construction: a task can be wired
+      exactly as specified and still not measure what the name promises.</p>
+      <div class="card__foot">Typically a construct-validity / individual-differences view</div>
+    </article>
+    <article class="card">
+      <p class="eyebrow">Claim 3</p>
+      <h3>Psychometric conditioning</h3>
+      <p><em>Are the reported numbers correctly conditioned &mdash; population, version, trial count
+      &mdash; and not over-generalised?</em></p>
+      <p class="small">Effect magnitudes and reliability estimates hold under conditions. The spec has
+      to say which, or it is quietly wrong.</p>
+      <div class="card__foot">Typically a methodologist / psychometrician</div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-head">How a sign-off changes the record</h2>
+  <p><code>expert-annotated</code> is not a badge anyone can award themselves. It is <strong>derived</strong>
+  from the three claim-level attestations: all three attested by named reviewers and the record derives
+  <code>expert-annotated</code>; any one contested and it derives <code>contested</code>; otherwise it stays
+  where it is. The validator enforces the agreement, so no machine check can ever mint human review.</p>
+  {{LADDER}}
+</section>
+
+<section>
+  <h2 class="section-head">Specs open for review</h2>
+  <p>All of them, today. Pick the one closest to your work &mdash; the Eriksen Flanker Task has the most
+  supporting material assembled and is the intended first vertical.</p>
+  {{SPEC_TABLE}}
+</section>
+
+<section class="panel">
+  <h2>To volunteer</h2>
+  <p>Open an issue on the repository saying which spec and which claim(s) you would take, and we will
+  send the attestation dossier for that spec &mdash; the spec, its references, the evidence the harness
+  can show for each claim, an explicit list of what it cannot show, and a scope template for your
+  sign-off.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="{{ISSUE_URL}}">Offer a review on GitHub</a>
+    <a class="btn" href="{{BASE}}specs/">Read the specs first</a>
+  </div>
+  <p class="small muted" style="margin-top:1rem">Prefer not to use GitHub? Reach the maintainer through
+  <a href="https://github.com/HugoFara">the maintainer's GitHub profile</a>.</p>
+</section>

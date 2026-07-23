@@ -1,0 +1,50 @@
+<section>
+  <p class="eyebrow">About</p>
+  <h1>What this catalog claims, and what it doesn't</h1>
+  <p class="lede">One curated corpus, rendered twice: as a <a
+  href="https://github.com/HugoFara/awesome-psychology-tasks">README</a> for people who read lists on
+  GitHub, and as this site for people who want to browse. Same data, no second database, no drift.</p>
+</section>
+
+<section>
+  <h2 class="section-head">How an entry gets here</h2>
+  <ol>
+    <li><strong>Paradigms</strong> are a curated list &mdash; name, description, cognitive domains, key
+    references with DOIs.</li>
+    <li><strong>Implementations</strong> are harvested from public catalogs and repositories by an
+    ingestion pipeline that records provenance for every record: source, source URL, scraper version,
+    and fetch date. Metadata only, always.</li>
+    <li><strong>A headless launch check</strong> visits each implementation URL and records whether it
+    loads. Records whose last check failed are held back from these pages.</li>
+    <li><strong>Paradigm assignment</strong> is LLM-assisted and then curated. It is the step most
+    likely to be wrong, and a mislabelled task is the one error class this catalog has actually caught
+    in the wild.</li>
+    <li><strong>Specifications</strong> are drafted separately and vendored in from the executable-spec
+    harness, together with the verdicts of any implementations driven end-to-end through them.</li>
+  </ol>
+</section>
+
+<section>
+  <h2 class="section-head">The honesty ledger</h2>
+  <p>Each signal on this site means one specific thing. The table says what each one does <em>not</em>
+  mean, because that is the part usually left out.</p>
+  {{LEDGER}}
+</section>
+
+<section>
+  <h2 class="section-head">Known limits</h2>
+  {{LIMITS}}
+  <p class="callout">A launch check is not a quality check, paradigm labels carry the classifier's error
+  rate, and specification records are unreviewed drafts. Where a number would flatter the corpus, this
+  site prints the caveat next to it instead.</p>
+</section>
+
+<section>
+  <h2 class="section-head">Legal and licensing posture</h2>
+  <p>This catalog holds <strong>metadata only</strong>. It does not download, mirror, or rehost task
+  code, stimuli, or participant data, and every record carries an attribution and a link back to its
+  source. Follow the link to reach the authors' own terms &mdash; those govern any use of the task
+  itself.</p>
+  <p>Catalog content is offered under CC&nbsp;BY&nbsp;4.0 and the tooling under MIT. If your work is
+  listed and you want the entry corrected or removed, open an issue and it will be handled.</p>
+</section>
