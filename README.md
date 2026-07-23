@@ -2,7 +2,6 @@
 
 > A curated list of experimental psychology tasks and paradigms, the platforms to run them, and the repositories where you can find ready-made implementations.
 
-
 **[Browse it as a website →](https://hugofara.github.io/awesome-psychology-tasks/)** — same corpus, searchable, one page per paradigm and specification.
 
 ## Contents
@@ -33,7 +32,6 @@
   - [Developmental](#developmental)
   - [Clinical / Screening](#clinical--screening)
 - [Contributing](#contributing)
-- [Acknowledgments](#acknowledgments)
 - [License](#license)
 
 ---
@@ -669,14 +667,6 @@ Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTIN
 If you know of a task, platform, or repository that should be listed here, please open an issue or submit a pull request.
 
 ---
-
-## Acknowledgments
-
-<a href="https://evolvinglanguage.ch">
-  <img src="assets/nccr-evolving-language-logo.png" alt="NCCR Evolving Language" width="300">
-</a>
-
-This project was developed at [NCCR Evolving Language](https://evolvinglanguage.ch), a National Centre of Competence in Research funded by the [Swiss National Science Foundation](https://www.snf.ch).
 
 ## License
 

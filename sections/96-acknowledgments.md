@@ -1,3 +1,10 @@
+<!-- HELD — not rendered into README.md.
+
+     The institutional attribution below is pending confirmation from the
+     institution. `scripts/build_readme.py` skips this fragment and omits its
+     Contents entry; both are marked so the section can be restored in one
+     change once the attribution is confirmed. Do not delete this file. -->
+
 ## Acknowledgments
 
 <a href="https://evolvinglanguage.ch">

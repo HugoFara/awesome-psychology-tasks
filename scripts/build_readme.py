@@ -384,7 +384,7 @@ def build_toc(domain_headings: list[str]) -> str:
         ("Tasks by Cognitive Domain", "tasks-by-cognitive-domain",
          [(d, slugify_anchor(d)) for d in domain_headings]),
         ("Contributing", "contributing", []),
-        ("Acknowledgments", "acknowledgments", []),
+        # ("Acknowledgments", "acknowledgments", []),  # held — see build()
         ("License", "license", []),
     ]
     for title, anchor, subs in items:
@@ -445,7 +445,10 @@ def build(data_dir: Path) -> str:
     parts.append("---\n")
     parts.append(load_section("95-contributing.md"))
     parts.append("---\n")
-    parts.append(load_section("96-acknowledgments.md"))
+    # 96-acknowledgments.md is deliberately NOT rendered: the institutional
+    # attribution it carries is pending confirmation from the institution. The
+    # fragment is kept intact so restoring it is a one-line change here (plus the
+    # TOC entry in build_toc) once that confirmation lands.
     parts.append(load_section("97-license.md"))
 
     return "\n".join(parts)
