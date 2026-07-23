@@ -206,6 +206,26 @@ Specs and their executable contracts are produced by the paradigm-test-harness (
 catalog's executable-spec tooling) and vendored here as `data/specs.json`; this
 catalog only *reads* the proven signal — it never hosts task code, stimuli, or data.
 
+> ### 📣 Call for expert reviewers
+>
+> **Every spec below is unreviewed, and the first expert review is the one that matters.**
+> The ask is deliberately bounded: **one spec, three separable claims, an afternoon.**
+>
+> | Claim | The question | Who typically signs |
+> |-------|--------------|---------------------|
+> | `contrast-identification` | Does the defining contrast correctly identify the paradigm? | Cognitive psychologist (attention / control) |
+> | `construct-operationalization` | Is the contrast a defensible measure of the named construct? | Construct-validity / individual-differences view |
+> | `psychometric-conditioning` | Are the reported numbers correctly conditioned, not over-generalised? | Methodologist / psychometrician |
+>
+> Attesting one claim and contesting another is an honest, useful outcome — not a failure.
+> Every sign-off is **named, dated, scoped, and revocable**, and `expert-annotated` is
+> *derived* from the three claims, so no machine check can ever mint it.
+>
+> **To volunteer**, [open an issue](https://github.com/HugoFara/awesome-psychology-tasks/issues/new?title=Spec%20review%20offer)
+> saying which spec and which claim(s) you would take, and we will send the attestation
+> dossier for that spec — the evidence for each claim, an explicit list of what the
+> tooling *cannot* show you, and a scope template for your sign-off.
+
 | Paradigm | Family | Defining contrast | Validation | Executable test |
 |----------|--------|-------------------|------------|-----------------|
 | Color Delayed Estimation (Visual Working Memory) | continuous-report | `guess-rate (mixture-decomposition)` | 🔵 `sourced` — unreviewed | ✓ `verify:task` |
@@ -355,7 +375,7 @@ In the **Implementations** column, abbreviations link to ready-made versions:
 | Balloon Analogue Risk Task (BART) | Pump a virtual balloon for increasing reward; risk losing all if it pops. Indexes risk-taking propensity. | Lejuez, C. W., Read, J. P., Kahler, C. W., Richards, J. B., Ramsey, S. E., Stuart, G. L., Strong, D. R., & Brown, R. A. (2002). Evaluation of a behavioral measure of risk taking: The Balloon Analogue Risk Task (BART). Journal of Experimental Psychology: Applied, 8(2), 75-84. | [PT](https://www.psytoolkit.org/experiment-library/bart.html) · [Pv](https://pavlovia.org/ChZ_CC/bart) |
 | Beads Task (Jumping to Conclusions) | Draw beads from jars of known ratios; decide which jar they come from. Fewer draws = jumping to conclusions bias. | Phillips, L. D., & Edwards, W. (1966). Conservatism in a simple probability inference task. Journal of Experimental Psychology, 72(3), 346-354. | [Pv](https://pavlovia.org/auzworld/beads-distractor) |
 | Cambridge Gambling Task (CGT) | Bet on outcomes with explicit probabilities displayed. Separates risk-taking from learning. | Rogers, R. D., Owen, A. M., Middleton, H. C., Williams, E. J., Pickard, J. D., Sahakian, B. J., & Robbins, T. W. (1999). Choosing between Small, Likely Rewards and Large, Unlikely Rewards Activates Inferior and Orbital Prefrontal Cortex. The Journal of Neuroscience, 19(20), 9029-9038. |  |
-| Cognitive Reflection Test (CRT) | Short item set (typically 3-7 questions) where the intuitive answer is wrong and reflection is required to reach the correct one (e.g. "A bat and ball cost $1.10…"). Scores reflective vs. heuristic thinking. |  | [Extended IQ & Cognitive Bias Challenge](https://ordinarymantrying.com/tools/iq-challenge-extended.html) — 20-question browser tool covering CRT (bat/ball, lily pad, machines) plus Monty Hall, Linda problem, Wason task, gambler's fallacy, anchoring. Free, no login. |
+| Cognitive Reflection Test (CRT) | Short item set (typically 3-7 questions) where the intuitive answer is wrong and reflection is required to reach the correct one (e.g. "A bat and ball cost $1.10…"). Scores reflective vs. heuristic thinking. |  |  |
 | Decisions from Experience | Participants sample from payoff distributions before choosing, rather than seeing described probabilities. Reveals the description–experience gap. | Hertwig, R., Barron, G., Weber, E. U., & Erev, I. (2004). Decisions from Experience and the Effect of Rare Events in Risky Choice. Psychological Science, 15(8), 534-539. |  |
 | Delay Discounting | Choose between smaller-sooner and larger-later rewards. Discounting steepness measures impulsivity. | Rachlin, H., Raineri, A., & Cross, D. (1991). Subjective probability and delay. Journal of the Experimental Analysis of Behavior, 55(2), 233-244. | [Pv](https://pavlovia.org/abordeianu/e4e_delaydiscounting_v2) |
 | Dictator Game | One player allocates money to a passive other. Purer measure of altruism/prosocial preferences. | Bolton, G. E., Katok, E., & Zwick, R. (1998). Dictator game giving: Rules of fairness versus acts of kindness. International Journal of Game Theory, 27(2), 269-299. |  |

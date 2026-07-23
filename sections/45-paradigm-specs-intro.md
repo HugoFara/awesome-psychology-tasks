@@ -29,3 +29,23 @@ operationalisation of the construct. That judgement stays human.
 Specs and their executable contracts are produced by the paradigm-test-harness (the
 catalog's executable-spec tooling) and vendored here as `data/specs.json`; this
 catalog only *reads* the proven signal — it never hosts task code, stimuli, or data.
+
+> ### 📣 Call for expert reviewers
+>
+> **Every spec below is unreviewed, and the first expert review is the one that matters.**
+> The ask is deliberately bounded: **one spec, three separable claims, an afternoon.**
+>
+> | Claim | The question | Who typically signs |
+> |-------|--------------|---------------------|
+> | `contrast-identification` | Does the defining contrast correctly identify the paradigm? | Cognitive psychologist (attention / control) |
+> | `construct-operationalization` | Is the contrast a defensible measure of the named construct? | Construct-validity / individual-differences view |
+> | `psychometric-conditioning` | Are the reported numbers correctly conditioned, not over-generalised? | Methodologist / psychometrician |
+>
+> Attesting one claim and contesting another is an honest, useful outcome — not a failure.
+> Every sign-off is **named, dated, scoped, and revocable**, and `expert-annotated` is
+> *derived* from the three claims, so no machine check can ever mint it.
+>
+> **To volunteer**, [open an issue](https://github.com/HugoFara/awesome-psychology-tasks/issues/new?title=Spec%20review%20offer)
+> saying which spec and which claim(s) you would take, and we will send the attestation
+> dossier for that spec — the evidence for each claim, an explicit list of what the
+> tooling *cannot* show you, and a scope template for your sign-off.

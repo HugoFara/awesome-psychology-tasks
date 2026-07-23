@@ -9,22 +9,44 @@ Thank you for your interest in contributing! This list aims to be a comprehensiv
 - `sections/*.md` — hand-edited narrative prose (intro, "Choosing a Platform", "Limitations & Gotchas", "Cross-Domain Tasks", etc.).
 - `data/platforms.yaml` — the four platform tables (Open Source, Commercial / Freemium, Survey & Clinical, Hosting & Backend).
 - `data/collections.yaml` — the Repositories & Collections table plus replication projects and data repositories.
-- `data/source-labels.yaml` — maps the short labels (`PT`, `Ms`, `EF`, `Pv`, …) shown in the Implementations column to entries in the SPA's `community-implementations.json`.
-- `paradigms.json` and `community-implementations.json` (in the sibling `library.nccr-ttf-ddg.ch/public/data/` directory) — the canonical paradigm list and the known implementations harvested by the [pipeline](../pipeline/). Each paradigm row in "Tasks by Cognitive Domain" comes from these.
+- `data/source-labels.yaml` — maps the short labels (`PT`, `Ms`, `EF`, `Pv`, …) shown in the Implementations column to entries in `data/community-implementations.json`.
+- `data/paradigms.json` and `data/community-implementations.json` — the canonical paradigm list and the known implementations harvested by the ingestion pipeline. Each paradigm row in "Tasks by Cognitive Domain" comes from these.
+- `data/specs.json` — paradigm specifications, vendored in from the executable-spec harness.
 
-To regenerate the README locally:
+`data/` is the single corpus, and it has **two renderers**: `README.md` for people who read lists on GitHub, and the [browsable site](https://hugofara.github.io/awesome-psychology-tasks/) for people who want to search and link to one entry. Curate once, render twice — never add a second content store.
+
+To regenerate both locally:
 
 ```bash
 pip install -r scripts/requirements.txt
 python scripts/build_readme.py            # writes README.md
 python scripts/build_readme.py --check    # CI: exits 1 if README.md is stale
+
+python scripts/build_site.py              # writes site/out/ (generated, not committed)
+python scripts/build_site.py --base-url / --serve   # preview at http://localhost:8000
 ```
+
+Site prose lives in `site/templates/*.html`, styling in `site/static/app.css`. The build fails on any broken internal link.
 
 ## How to Contribute
 
+### Reviewing a Paradigm Specification
+
+**The contribution the catalog needs most.** Every specification in `data/specs.json` is `sourced` — drafted, referenced, and unreviewed by a named expert. Reviewing one is bounded: **three separable claims, an afternoon**.
+
+| Claim | The question | Who typically signs |
+|-------|--------------|---------------------|
+| `contrast-identification` | Does the defining contrast correctly identify the paradigm? | Cognitive psychologist (attention / control) |
+| `construct-operationalization` | Is the contrast a defensible measure of the named construct? | Construct-validity / individual-differences view |
+| `psychometric-conditioning` | Are the reported numbers correctly conditioned, not over-generalised? | Methodologist / psychometrician |
+
+Attest one and contest another if that is what you find — a split outcome is a real result. Sign-offs are named, dated, scoped, and revocable, and `expert-annotated` is *derived* from the three claims, so a passing machine check can never produce it.
+
+[Open an issue](https://github.com/HugoFara/awesome-psychology-tasks/issues/new?title=Spec%20review%20offer) naming the spec and the claim(s) you would take, and we will send that spec's attestation dossier.
+
 ### Adding a Task (Paradigm)
 
-Tasks live in `paradigms.json` in the SPA. To add one, open a PR against `library.nccr-ttf-ddg.ch/public/data/paradigms.json` with:
+Tasks live in `data/paradigms.json`. To add one, open a PR against that file with:
 
 ```json
 {
@@ -42,11 +64,11 @@ Tasks live in `paradigms.json` in the SPA. To add one, open a PR against `librar
 - **description** — 1–2 sentences: what the participant does and what it measures.
 - **keyReferences[].citation** — the original or most canonical citation (`Author, Year`).
 
-When the SPA is rebuilt, regenerate the README — the new task appears automatically.
+Re-run both renderers and the new task appears automatically, with its own page on the site.
 
 ### Adding an Implementation
 
-Implementations live in `community-implementations.json` and are normally written by the [ingestion pipeline](../pipeline/) (PsyToolkit, Pavlovia, jsPsych demos, etc.). To curate one by hand, append a record:
+Implementations live in `data/community-implementations.json` and are normally written by the ingestion pipeline (PsyToolkit, Pavlovia, jsPsych demos, etc.). To curate one by hand, append a record:
 
 ```json
 {
@@ -61,7 +83,7 @@ Implementations live in `community-implementations.json` and are normally writte
 }
 ```
 
-The README only renders implementations whose `platform` is listed in `data/source-labels.yaml`. To surface a new platform under its own short label (e.g., `[Lv]` for Labvanced), add it there.
+The README only renders implementations whose `platform` is listed in `data/source-labels.yaml`, and at most one per platform per paradigm. To surface a new platform under its own short label (e.g., `[Lv]` for Labvanced), add it there. The site renders every record that passed its last link check, so a new implementation shows up there without any label mapping.
 
 ### Adding a Platform or Collection
 
