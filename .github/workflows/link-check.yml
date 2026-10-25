@@ -16,10 +16,10 @@ jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Restore lychee cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .lycheecache
           key: lychee-cache-${{ github.sha }}
@@ -38,14 +38,14 @@ jobs:
 
       - name: Upload report artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: lychee-report
           path: ./lychee-report.md
 
       - name: Create or update issue on broken links (scheduled only)
         if: github.event_name == 'schedule' && failure()
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Link Check: broken links detected"
           content-filepath: ./lychee-report.md
